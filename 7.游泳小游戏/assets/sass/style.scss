@@ -1,0 +1,387 @@
+@charset "UTF-8";
+@import "Methods";
+@import "quantity";
+@import "public";
+@import "animate";
+.pageBox{
+  @include wh100();
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+}
+.loadPage{
+  @include wh100();
+  z-index: 1000;
+  background:#80c4ed;
+}
+.mingBox{
+  width: 750px;
+  height: 170px;
+  @include mince(0);
+  @include setFont(26px,#fff,40px,1);
+  .boy{
+    @include setBackgroudImg(204px,160px,"img30.png");
+    margin: 0 auto;
+    background-position: center top;
+  }
+}
+.jindBox{
+  @include setBackgroudImg(453px,43px,"img33.png");
+  @include trCenter();
+  bottom: 0;
+  div{
+    width: 444px;
+    height: 36px;
+    @include mince(0);
+    p{
+      position: absolute;
+      top: 0;
+      left: 0;
+      background:url("../images/img32.png") no-repeat left center;
+      height: 36px;
+      border-radius: 18px;
+      width:0%;
+      span{
+        display: block;
+        position: absolute;
+        @include setBackgroudImg(68px,68px,"img31.png");
+        left: 100%;
+        top: 50%;
+        margin-top: -34px;
+        margin-left: -18px;
+        &::before{
+          content: "";
+          display: none;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          @include mince(0);
+          background: #fff;
+        }
+      }
+    }
+  }
+}
+.page{
+  @include wh100();
+  overflow: hidden;
+  background-size: cover;
+}
+.bg0{
+  @include setIconBackgroudImg("bg0.jpg");
+}
+.wh1200d{
+  width: 750px;
+  @include mince(0);
+  height: 1200px;
+
+}
+.tit1{
+ @include setBackgroudImg(692px,465px,"img0.png");
+  position: absolute;
+  left: 50%;
+  margin-left: -346px;
+  top: 0px;
+  z-index: 10;
+  opacity: 0;
+}
+.tit2{
+  @include setBackgroudImg(612px,266px,"img1.png");
+  position: absolute;
+  left: 50%;
+  margin-left: -306px;
+  top: 400px;
+  opacity: 0;
+  transform-origin: center top;
+  transform-style: preserve-3d;
+}
+.box0{
+  @include setBackgroudImg(454px,358px,"img3.png");
+  position: absolute;
+  left: 50%;
+  margin-left: -227px;
+  bottom: 154px;
+  transform: scale(0.6) translateY(-600px);
+  opacity: 0;
+}
+.startButton{
+  position:absolute;
+  left: 50%;
+  margin-left: -173px;
+  bottom: 0px;
+  @include shifting(0px,60px,0);
+ // visibility: hidden;
+  p{
+    @include setBackgroudImg(346px,122px,"img2.png");
+  }
+}
+.bg1{
+  @include setIconBackgroudImg("bg1.jpg");
+}
+.lightBox{
+  @include setBackgroudImg(750px,712px,"img4.png");
+  opacity: 1;
+}
+.box1{
+  @include setBackgroudImg(650px,677px,"img11.png");
+  position: absolute;
+  left: 50%;
+  margin-left: -325px;
+  top: 60px;
+  @include shifting(0px,-80px,0);
+}
+.tit3{
+  @include setBackgroudImg(486px,136px,"img5.png");
+  position: absolute;
+  left: 50%;
+  margin-left: -243px;
+  top: -52px;
+}
+.s1{
+  position: absolute;
+  @include setBackgroudImg(91px,66px,"img6.png");
+  top: -90px;
+  left: 196px;
+}
+.s2{
+  position: absolute;
+  @include setBackgroudImg(59px,81px,"img7.png");
+  top: -110px;
+  right: 200px;
+}
+.s3{
+  position: absolute;
+  @include setBackgroudImg(88px,69px,"img8.png");
+  right: 145px;
+  top: -85px;
+}
+.prizeTit{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 88px;
+  text-align: center;
+  height: 232px;
+  img{
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    @include mince(0);
+  }
+  p{
+    @include setBackgroudImg(450px,150px,"img10.png");
+    position: absolute;
+    left: 50%;
+    margin-left: -225px;
+    bottom: -35px;
+    @include flexBox(0);
+    @include setFont(52px,#b86c00,60px,1);
+    text-shadow: 1px 3px 5px #fff;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+  }
+}
+.gameText{
+  width: 554px;
+  position: absolute;
+  left: 50%;
+  margin-left: -277px;
+  bottom:36px;
+  h2{
+    @include setFont(36px,#fff,40px,1);
+    text-shadow: 1px 2px 5px rgba(0,0,0,0.6);
+  }
+  h3{
+    @include setFont(26px,#fff,40px,1);
+    @include flexBox(0);
+    margin: 16px 0px;
+    &::before,&::after{
+      content:"";
+      display: block;
+      width: 56px;
+      height: 2px;
+      background: #fff;
+      opacity: 0.6;
+      margin: 0 30px;
+    }
+  }
+  .textListBox{
+    width: 554px;
+    margin: 0 auto;
+    @include balckpop(0.4);
+    height: 140px;
+    border-radius: 20px;
+    @include flexBox(0);
+    box-sizing: border-box;
+    @include setFont(40px,#e7e022,50px,1);
+  }
+}
+.footButton{
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  @include shifting(0px,60px,0);
+ // visibility: hidden;
+  p{
+    width: 517px;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 16px;
+    img{
+      width: 100%;
+      display: block;
+    }
+    &.tips{
+      &::before{
+        content: "";
+        display: block;
+        @include setBackgroudImg(259px,104px,"img15.png");
+        position: absolute;
+        right: -10px;
+        top: -80px;
+      }
+    }
+  }
+  a.backHome{
+    display: block;
+    margin: 0 auto;
+    width: 517px;
+    height: 80px;
+    @include flexBox(0);
+  }
+}
+
+#gameContainer{
+  @include wh100();
+  top: auto;
+  bottom: 0;
+  min-height: 600px;
+  overflow: hidden;
+  //@include setIconBackgroudImg("bg2.jpg");
+  //background-size: cover;
+}
+.bg2{
+
+}
+.gameTipsBox{
+  width: 750px;
+  position: absolute;
+  left: 0px;
+  top: 45px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  @include flexBox(1);
+  .disBoxCont{
+    position: relative;
+    @include setBackgroudImg(269px,97px,"img16.png");
+    p{
+      height: 55px;
+      width: 138px;
+      position: absolute;
+      left: 100px;
+      top: 25px;
+      @include setFont(30px,#fff,55px,1);
+    }
+  }
+  .timeOutBox{
+    @include setBackgroudImg(286px,89px,"img17.png");
+    position: relative;
+    p{
+      width: 146px;
+      height: 55px;
+      @include setFont(30px,#fff,55px,1);
+      position: absolute;
+      right: 28px;
+      top: 20px;
+    }
+  }
+}
+.gameTipsRule{
+  @include wh100();
+  @include balckpop(0.6);
+  .tipsTxt{
+    width: 750px;
+    @include trCenter();
+    top: 34%;
+    h3{
+      @include setFont(40px,#fff,50px,1);
+      span{
+        color: #1cb8f3;
+      }
+    }
+    .startButtonGame{
+      @include setBackgroudImg(262px,117px,"img28.png");
+      margin: 0 auto;
+      margin-top:90px;
+    }
+  }
+  .buttonETIPS{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 55px;
+    @include flexBox(1);
+    position: absolute;
+    left: 0px;
+    bottom: 50px;
+  }
+}
+.sharePage{
+  @include wh100();
+  position: fixed;
+  @include balckpop(0.7);
+  z-index: 110;
+  display: none;
+  img{
+    position: absolute;
+    right: 90px;
+    top: 152px;
+  }
+}
+@import "curt";
+
+@media (min-height: 1335px) {
+
+}
+@media (max-height:1000/750*100vw){
+  .m_sacle96{
+    @include mince(0.96);
+  }
+  .s_sacle96{
+    @include boxsacle(0.96);
+  }
+}
+@media (max-height:1000/750*100vw){
+  .m_sacle96{
+    @include mince(0.92);
+  }
+  .s_sacle96{
+    @include boxsacle(0.92);
+  }
+}
+@media (max-height:1000/750*100vw){
+  .m_sacle96{
+    @include mince(0.84);
+  }
+  .s_sacle96{
+    @include boxsacle(0.84);
+  }
+}
+
+@media (max-height:1000/750*100vw){
+  .m_sacle96{
+    @include mince(0.8);
+  }
+  .s_sacle96{
+    @include boxsacle(0.8);
+  }
+}
+
+@media (max-height:1000/750*100vw){
+  .m_sacle96{
+    @include mince(0.7);
+  }
+  .s_sacle96{
+    @include boxsacle(0.7);
+  }
+}

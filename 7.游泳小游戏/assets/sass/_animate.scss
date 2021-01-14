@@ -1,0 +1,91 @@
+@charset "UTF-8";
+@keyframes opacity0-1 {
+    50%{
+      opacity: 1;
+    }
+  }
+
+@keyframes opacity0-2 {
+  40%,60%{
+    opacity: 0.6;
+  }
+}
+
+
+
+/*放大缩小*/
+@keyframes bigBtn1-2 {
+   50%{
+     transform: scale(1.2);
+   }
+ }
+@keyframes bigBtn1-1 {
+  50%{
+    transform: scale(1.1);
+  }
+}
+@keyframes bigAnimt {
+  0%{
+    opacity: 0;
+    transform: scale(3);
+  }
+  40%{
+    opacity: 1;
+    transform: scale(0.6);
+  }
+  65%{
+    transform: scale(1.2);
+  }
+  85%{
+    transform: scale(0.9);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/*气泡类*/
+@keyframes bubble0 {
+  0%,30%{
+    opacity: 0;
+    transform: translate(-150px,80px) scale(0.1);
+  }
+  70%,100%{
+    opacity: 1;
+    transform: scale(1) translate(0px,0px);
+  }
+}
+
+/**旋转**/
+@keyframes rotateAnimate {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/**爆破**/
+@keyframes bomb {
+  0%{
+    transform: scale(0) ;
+    opacity: 0;
+  }
+  40%,80%{
+    transform: scale(1) ;
+    opacity: 1;
+  }
+  100%{
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/*上移*/
+@keyframes shit50px {
+    50%{
+      transform: translateY(-80px);
+    }
+}

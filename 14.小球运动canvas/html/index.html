@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>优甲乐H5</title>
+	<meta charset="utf-8" />
+	<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+	<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+	<meta HTTP-EQUIV="expires" CONTENT="0">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta http-equiv="Expires" content="-1" />
+	<meta http-equiv="pragram" content="no-cache" />
+	<!--移动端兼容适配 -->
+	<script type="text/javascript">
+		if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+			var version = parseFloat(RegExp.$1);
+			if (version > 2.3) {
+				var phoneScale = parseInt(window.screen.width) / 750;
+				//alert(parseInt(window.screen.width));
+				document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+			} else {
+				document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+			}
+		} else {
+			document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+		//微信去掉下方刷新栏
+		if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+			document.addEventListener('WeixinJSBridgeReady', function () {
+				//WeixinJSBridge.call('hideToolbar');
+			});
+		}
+	</script>
+	<link href="../assets/css/swiper.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../assets/css/lk-alert.css" />
+	<link href="../assets/css/style.css" rel="stylesheet" />
+	<script src="../assets/js/jquery.js"></script>
+</head>
+
+<body class="perloader pagelock">
+	<!--perloader-->
+	<div class="load ">
+		<div class="modlist">
+			<div class="myload">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div class="loofd" id="loofd">
+				<p>0%</p>
+			</div>
+		</div>
+	</div>
+	<article class="h_cover">
+		<div class="h_box">
+			<section class="box0 box" data-num="1">
+				<div class="title"></div>
+				<div class="theme">
+					<span class="explain"></span>
+					<span class="tablet"></span>
+				</div>
+				<div class="btn01">
+					<span></span>
+				</div>
+			</section>
+			<section class="box1 box" data-num="2">
+				<div class="level">
+					<div class="theLast">00:<span>10</span></div>
+					<ul>
+						<li data-next="1">
+							<img src="../assets/images/h_pill.png" alt="" class="pass hide" />
+							<img src="../assets/images/h_pillS.png" alt="" class="by" />
+						</li>
+						<li data-next="2">
+							<img src="../assets/images/h_pill.png" alt="" class="pass" />
+							<img src="../assets/images/h_pillS.png" alt="" class="by hide" />
+						</li>
+						<li data-next="3">
+							<img src="../assets/images/h_pill.png" alt="" class="pass" />
+							<img src="../assets/images/h_pillS.png" alt="" class="by hide" />
+						</li>
+						<li class="mystical" data-next="4">
+							<span></span>
+							<img src="../assets/images/h_mystery.png" alt="" class="pass" />
+							<img src="../assets/images/h_mysteryS.png" alt="" class="by hide" />
+						</li>
+					</ul>
+				</div>
+				<div class="plaype">
+					<div class="game">
+						<div class="ball_exercise">
+							<canvas width="504" height="454" id="myCanvas"></canvas>
+						</div>
+					</div>
+					<div class="h10"></div>
+					<div class="h11"></div>
+					<div class="h12"></div>
+					<div class="h13"></div>
+				</div>
+				<p class="surplus">剩余药片：<span>5</span>/5</p>
+				<div class="btn02">
+					<span class="start"></span>
+					<span class="pause"></span>
+				</div>
+			</section>
+		</div>
+	</article>
+
+	<!-- 引导页 -->
+	<div class="guide on hide">
+		<img src="../assets/images/h05.png" alt="" class="h05" />
+		<span class="arrows"></span>
+		<div class="gotIt">
+			<a href="javascript:void(0)" class="know"></a>
+		</div>
+		<div class="countdown hide">
+			<span>3</span>
+			<div class="btn05"></div>
+		</div>
+		<div class="startHand">
+			<span class="dot"></span>
+		</div>
+		<div class="hand"></div>
+	</div>
+	<!-- 引导页--神秘关卡 -->
+	<div class="mystery_guide on hide">
+		<img src="../assets/images/h19.png" alt="" class="h19" />
+		<div class="guidance">
+			<img src="../assets/images/h21.png" alt="" class="h21" />
+			<span class="arrows"></span>
+		</div>
+	</div>
+	<!-- 弹窗 -->
+	<div class="h_alert hide">
+		<!-- Perfect 下一关 -->
+		<div class="Perfect hide">
+			<a href="javascript:void(0)" class="next"></a>
+		</div>
+		<!-- 太可惜了，再来一次 -->
+		<div class="pity hide">
+			<a href="javascript:void(0)" class="try_again"></a>
+		</div>
+		<!-- NICE--挑战成功--五次用完--查看成绩 -->
+		<div class="win hide">
+			<a href="javascript:void(0)" class="grade"></a>
+		</div>
+		<!-- 五次机会用完--挑战结束 -->
+		<div class="failure hide">
+			<a href="" class="again_challenge"></a>
+		</div>
+		<!-- 恭喜您，查看成绩 -->
+		<div class="congrats hide">
+			<a href="javascript:void(0)" class="grade"></a>
+		</div>
+		<!-- 神秘关卡--通关失败--再次挑战 -->
+		<div class="carnet_challenge hide">
+			<a href="javascript:void(0)" class="defier"></a>
+		</div>
+		<!-- 神秘关卡--通关失败--查看成绩 -->
+		<div class="carnet_grade hide">
+			<a href="javascript:void(0)" class="grade"></a>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../assets/js/lk-alert.min.js"></script>
+	<script type="text/javascript" src="../assets/js/public.js"></script>
+	<script type="text/javascript" src="../assets/js/loading.js"></script>
+	<script type="text/javascript" src="../assets/js/loader.js"></script>
+	<script type="text/javascript" src="../assets/js/md.js"></script>
+	<script type="text/javascript" src="../assets/js/canvas.methods.js"></script>
+	<script type="text/javascript" src="../assets/js/vconsole.min.js"></script>
+	<script>
+		// new VConsole();
+	</script>
+	<script type="text/javascript">
+		pageNum = 0;
+		pageM = 0;
+		//查看排行榜
+		$(".grade").click(function () {
+			var mysterious = false;
+			$(this).parent().hide();
+			$(this).parents(".h_alert").hide();
+			console.log(arr);
+			console.log(arr.length);
+			if (arr.length > 3) {
+				alert('进入了神秘关卡')
+				mysterious = true
+			} else {
+				alert('没进入神秘关卡')
+				mysterious = false
+			}
+			console.log(sum(arr));
+			a = jm(parseInt(Math.random() * 5), sum(arr));
+			console.log(a);
+		});
+	</script>
+</body>
+
+</html>

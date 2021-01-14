@@ -1,0 +1,334 @@
+@charset "UTF-8";
+/*
+ *宽高设置;
+ */
+@mixin setWh($width,$height){
+  width: $width;
+  height: $height;
+}
+/*
+ *设置input，textarea的默认颜色;
+ */
+@mixin setPlaceholderColor($color){
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+/*
+ *placeholder自定义
+ */
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+  &::-moz-placeholder {
+    @content
+  }
+  &:-ms-input-placeholder {
+    @content
+  }
+}
+/*
+ *设置字体大小，颜色，行高，水平对齐方式;
+ */
+@mixin setFont($size,$color,$lineHeight,$txtAlgin){
+  font-size: $size;
+  color: $color;
+  line-height: $lineHeight;
+  @if($txtAlgin==0){
+    text-align: left;
+  }@else if($txtAlgin==1){
+    text-align: center;
+  }@else {
+    text-align: right;
+  }
+}
+/*
+ *水平居中;
+ */
+@mixin marginAuto($width,$margin){
+  width: $width;
+  margin: $margin auto;
+}
+/*
+ *顶部定位；
+ */
+@mixin position(){
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+/*
+ *元素百分百定位；
+ */
+@mixin wh100(){
+  @include position();
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ *元素填充;
+ */
+@mixin ObjImg(){
+  @include wh100();
+  //-o-object-fit: cover;
+  //object-fit: cover;
+}
+@mixin ObjImg1(){
+  @include wh100();
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+/*
+ *上下左右居中--定位;
+*/
+@mixin positionMiddle($width,$height){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $width;
+  height: $height;
+  margin-left: -$width/2;
+  margin-top: -$height/2;
+}
+
+/*
+ *css3上下左右居中带缩放;
+ */
+@mixin mince($c){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  @if($c==0){
+    -webkit-transform: translate(-50%,-50%);
+       -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+         -o-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+  }@else {
+    -webkit-transform: translate(-50%,-50%) scale($c);
+       -moz-transform: translate(-50%,-50%) scale($c);
+        -ms-transform: translate(-50%,-50%) scale($c);
+         -o-transform: translate(-50%,-50%) scale($c);
+            transform: translate(-50%,-50%) scale($c);
+  }
+
+}
+/*
+ *c3 水平居中
+ */
+@mixin trCenter(){
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+     -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+       -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+/*
+ *css3 垂直居中
+ */
+@mixin trMiddle{
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+/*
+ *背景图片设置;
+ */
+@mixin setBackgroudImg($width,$height,$src){
+  @include setWh($width,$height);
+  background-image: url("../images/#{$src}");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@mixin setIconBackgroudImg($src){
+  background-image: url("../images/#{$src}");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@mixin setBgSrc($src){
+  background-image: url("../images/#{$src}");
+}
+/*
+ *background-size设置背景图片;
+ */
+@mixin setBgSize($size){
+  @if($size==0){
+      -webkit-background-size: cover;
+              background-size: cover;
+  }@else {
+    -webkit-background-size: $size $size;
+            background-size: $size;
+  }
+}
+/*
+ *背景颜色和黑色遮罩
+ */
+@mixin balckpop($o){
+  background: rgba(0,0,0,$o);
+}
+@mixin backcolor($c){
+  background-color: $c;
+}
+/*
+ *关闭按钮;
+ */
+@mixin colstcont($w,$h,$aw,$ah,$c,$br){
+  width: $w;
+  height: $h;
+  &::before,&::after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: $c;
+    -webkit-border-radius: $br;
+    border-radius: $br;
+    width: $aw;
+    height: $ah;
+    margin-top: -0.5*$ah;
+    margin-left: -0.5*$aw;
+  }
+  &::before{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+       transform: rotate(45deg);
+  }
+  &::after{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+       transform: rotate(-45deg);
+  }
+}
+/**字左右间隙**/
+@mixin fontm($m){
+  letter-spacing: $m;
+}
+/**渐变**/
+@mixin baliner($f,$t){
+  background-image: -webkit-gradient(linear, left top, left bottom, from($f), to($t));
+  background-image: -webkit-linear-gradient($f, $t);
+  background-image: -moz-linear-gradient($f, $t);
+  background-image: -o-linear-gradient($f, $t);
+  background-image: linear-gradient($f, $t);
+}
+
+/**截字**/
+@mixin Truntion(){
+
+  -o-text-overflow:ellipsis;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*
+ *缩放;
+ */
+@mixin boxsacle($c){
+  -webkit-transform: scale($c);
+  -moz-transform: scale($c);
+  -ms-transform: scale($c);
+  -o-transform: scale($c);
+     transform: scale($c);
+}
+
+/*
+ *三角;
+ */
+@mixin triangle($width,$color,$direction){
+  border: $width solid transparent;
+  @if($direction==0){
+    border-top-color:$color ;
+  }@else if($direction==1){
+    border-right-color:$color ;
+  }@else if($direction==2){
+    border-bottom-color:$color ;
+  }@else if($direction==3){
+    border-left-color:$color ;
+  }
+}
+
+/*动画暂停*/
+@mixin pause{
+  -webkit-animation-play-state:paused!important;
+  -moz-animation-play-state:paused!important;
+  -o-animation-play-state:paused!important;
+  animation-play-state:paused!important;
+}
+
+/*
+ *隐藏位移;
+ */
+@mixin shifting($x,$y,$o){
+  opacity: $o;
+  -webkit-transform: translate($x,$y);
+     -moz-transform: translate($x,$y);
+      -ms-transform: translate($x,$y);
+       -o-transform: translate($x,$y);
+          transform: translate($x,$y);
+}
+/*
+ *过度时间速度;
+ */
+@mixin speed($t,$s,$p){
+  @if($p==0){
+    -webkit-transition: all $t $s;
+    -o-transition: all $t $s;
+    -moz-transition: all $t $s;
+    transition: all $t $s;
+  }@else   {
+    -webkit-transition: all $t $s $p;
+    -o-transition: all $t $s $p;
+    -moz-transition: all $t $s $p;
+    transition: all $t $s $p;
+  }
+}
+
+/*模糊效果*/
+@mixin blur($p){
+  -webkit-filter: blur($p);
+          filter: blur($p);
+}
+
+/*声明3d*/
+@mixin statement3D($n){
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/**弹性盒子**/
+@mixin flexBox($n){
+  display: flex;
+  align-items: center;
+  @if($n == 0){
+    justify-content: center;
+  }@else {
+    justify-content:space-between;
+  }
+}
+
+/**图层样式**/
+@mixin mixBlendMode($m){
+  mix-blend-mode:$m;
+ // -webkit-mix-blend-mode:$m;
+}

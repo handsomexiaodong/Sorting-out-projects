@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.sum = function () {
+                alert(this.name);
+            }
+        }
+
+        /* 原型继承 */
+        function Per() {
+            this.name = 'Per';
+        }
+
+        Per.prototype = new Person()
+        var Per1 = new Per();
+        Per1.age = 10;
+        alert(Per1.name);
+        console.log(Per1);
+        alert(Per1 instanceof Person);
+
+        /* 构造函数继承 */
+        function Con() {
+            Person.call(this, 'jer');
+            this.age = 12;
+        }
+        var con1 = new Con();
+        console.log(con1.name);
+        var aa = '123';
+        console.log(parseInt(aa, 8));
+
+        /* 组合式继承 */
+        function subType(name) {
+            Person.call(this, name);
+        }
+        subType.prototype = new Person();
+        var sub = new subType('哈哈', 124);
+        console.log(sub.name);
+        console.log(sub.age);
+    </script>
+
+</body>
+
+</html>

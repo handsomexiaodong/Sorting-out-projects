@@ -1,0 +1,231 @@
+@charset "UTF-8";
+.curt{
+  .downTips{
+    @include shifting(0px,0px,1);
+    @include speed(0.5s,1s,0);
+    span{
+      display: block;
+      animation: downTips 1.5s 2s infinite;
+      @at-root {
+        @keyframes downTips {
+          0%{
+            opacity: 1;
+            transform:translateY(0px);
+          }
+          100%{
+            opacity: 0;
+            transform: translateY(-50px);
+          }
+        }
+      }
+    }
+  }
+  div[class*="sbg"]{
+    opacity: 1;
+    @include speed(1s,0s,0)
+  }
+  .approach{
+    @include shifting(0px,0px,1);
+    @include speed(0.6s,0s,0);
+  }
+  .tit1{
+    @include speed(1s,0s,0);
+  }
+  .tit2{
+    @include speed(0.5s,0.5s,0);
+  }
+  .tit3{
+    @include speed(0.5s,0.8s,0);
+  }
+  /**2**/
+  .doorBox{
+    .door{
+      @include speed(0.5s,0.1s,linear);
+      @include shifting(0px,0px,1);
+        span{
+          opacity: 0.5;
+          @include speed(1s,1s,0);
+        }
+        &:nth-of-type(1){
+
+          span{
+            transform: perspective(500px) rotateY(50deg);
+          }
+
+        }
+        &:nth-of-type(2){
+          span{
+            transform:perspective(500px) rotateY(-50deg);
+          }
+
+        }
+    }
+  }
+  .tit4{
+    @include mince(1);
+    opacity: 1;
+    @include speed(0.8s,1.4s,0);
+    p{
+      @include speed(0.5s,2.2s,0);
+    }
+    span{
+      @include speed(0.5s,2.2s,0);
+    }
+  }
+  .tit5{
+    @include speed(0.8s,2.6s,0);
+  }
+
+  /**3**/
+  .tit6{
+    @include speed(0.8s,0.3s,0);
+  }
+  .tit7{
+    @include speed(0.8s,0.6s,0);
+  }
+  /**4**/
+  .tit9{
+    @include speed(0.6s,0.5s,0);
+  }
+
+  /**6**/
+  .box3{
+    @include speed(0.5s,0.3s,0);
+  }
+  .box4{
+    @include speed(0.5s,0.6s,0);
+  }
+  .box5{
+    @include speed(0.5s,0.9s,0);
+  }
+  .box6{
+    @include speed(0.5s,1.2s,0);
+  }
+  .tit10{
+    @include speed(0.5s,1.2s,0);
+  }
+  .tit11{
+    @include speed(0.5s,1.4s,0);
+  }
+  .box7{
+    transform: scale(1) translate(0px,0px);
+    opacity: 1;
+    @include speed(0.6s,1.8s,0);
+  }
+  /**7**/
+  .tit13{
+    @include speed(0.6s,0.4s,0);
+  }
+  .box8{
+    @include speed(0.5s,0.3s,0);
+  }
+  .box9{
+    @include speed(0.5s,0.6s,0);
+  }
+  .box11,.box12{
+    @include speed(0.6s,0.6s,0);
+  }
+  /**9**/
+  .tit15{
+    @include speed(0.5s,0.5s,0);
+  }
+  /**10**/
+  .tit16,.tit17{
+    @include speed(0.8s,0.8s,0);
+  }
+  /**11**/
+  .tit19,.tit20{
+    @include speed(0.6s,0.3s,0);
+  }
+  .box14{
+    @include speed(0.6s,0.6s,0);
+  }
+  /**12**/
+  .tit21,.box15{
+    @include speed(0.8s,0.4s,0);
+  }
+  .tit22{
+    @include speed(0.8s,0.8s,0);
+  }
+  /**13**/
+  .box16{
+    @include speed(0.8s,0.4s,0);
+  }
+  .box17{
+    @include speed(0.8s,0.8s,0);
+  }
+  /**15**/
+  .tit25{
+    @include speed(0.8s,0.3s,0);
+  }
+  .box18{
+    @include speed(0.6s,0.6s,0);
+  }
+
+  /**16**/
+  .tit27,.box19{
+    @include speed(0.5s,0.3s,0);
+  }
+  .tit28,.box20{
+    @include speed(0.5s,0.6s,0);
+  }
+  /**18**/
+  .box21{
+    @include speed(0.6s,0.3s,0);
+  }
+  .tit31{
+    @include speed(0.6s,0.6s,0);
+  }
+
+  /**20**/
+  .tit35{
+    @include speed(0.6s,0.4s,0);
+  }
+  .box22{
+    @include speed(0.6s,0.6s,0);
+  }
+  .tit36{
+    @include speed(0.6s,0.8s,0);
+  }
+  .tit36_1{
+    @include speed(0.6s,1s,0);
+  }
+  /**21**/
+  .tit37{
+    @include speed(0.8s,0.3s,0);
+  }
+  .tit38{
+    @include speed(0.6s,0.6s,0);
+  }
+  .box23{
+    @include speed(0.6s,0.9s,0);
+    p{
+      opacity: 1;
+      @include speed(0.5s,1.3s,0);
+      span{
+        animation: opacity0-1 1.2s 2s infinite;
+      }
+    }
+  }
+
+  /**22**/
+  .box24{
+    @include speed(0.6s,0.3s,0);
+  }
+  .tit42_1{
+    @include speed(0.6s,0.6s,0);
+  }
+  /**23**/
+  .tit41,.tit42{
+    @include speed(0.6s,0.3s,0);
+  }
+  .box25{
+    @include speed(0.6s,0.6s,0);
+  }
+  .tit44{
+    @include speed(0.6s,0.3s,0);
+  }
+  .tit45{
+    @include speed(0.6s,0.6s,0);
+  }
+}

@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+@keyframes opacity0-1 {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity0-2 {
+
+  40%,
+  60% {
+    opacity: 0.6;
+  }
+}
+
+/*放大缩小*/
+@keyframes bigBtn1-2 {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes bigBtn1-1 {
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes bigAnimt {
+  0% {
+    opacity: 0;
+    transform: scale(3);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(0.6);
+  }
+
+  65% {
+    transform: scale(1.2);
+  }
+
+  85% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 若隐若现 */
+@keyframes loom {
+  0% {
+    opacity: 0
+  }
+
+  25% {
+    opacity: .4;
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  75% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 闪烁 */
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 渐现 */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/*气泡类*/
+@keyframes bubble0 {
+
+  0%,
+  30% {
+    opacity: 0;
+    transform: translate(-150px, 80px) scale(0.1);
+  }
+
+  70%,
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0px, 0px);
+  }
+}
+
+/**旋转**/
+@keyframes rotateAnimate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/**缩放(倍数)**/
+@mixin scale($n) {
+  -webkit-transform: scale($n);
+  -moz-transform: scale($n);
+  -ms-transform: scale($n);
+  -o-transform: scale($n);
+  transform: scale($n);
+}
+
+/**旋转**/
+@mixin rotateX($deg) {
+  -webkit-transform: rotateX($deg);
+  -moz-transform: rotateX($deg);
+  -ms-transform: rotateX($deg);
+  -o-transform: rotateX($deg);
+  transform: rotateX($deg);
+}
+
+@mixin rotateY($deg) {
+  -webkit-transform: rotateY($deg);
+  -moz-transform: rotateY($deg);
+  -ms-transform: rotateY($deg);
+  -o-transform: rotateY($deg);
+  transform: rotateY($deg);
+}
+
+@mixin rotateZ($deg) {
+  -webkit-transform: rotateZ($deg);
+  -moz-transform: rotateZ($deg);
+  -ms-transform: rotateZ($deg);
+  -o-transform: rotateZ($deg);
+  transform: rotateZ($deg);
+}
+
+/**位移**/
+@mixin translate($x:0, $y:0) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+/**过度**/
+@mixin transition($t, $dt:0s, $s:ease-out) {
+  -webkit-transition: all $t $dt $s;
+  -moz-transition: all $t $dt $s;
+  -o-transition: all $t $dt $s;
+  transition: all $t $dt $s;
+}
+
+/*过渡入场动画*/
+@mixin op {
+  opacity: 0;
+}
+
+@mixin up {
+  opacity: 0;
+  @include translate(0, 100px);
+}
+
+@mixin down {
+  opacity: 0;
+  @include translate(0, -100px);
+}
+
+@mixin right {
+  opacity: 0;
+  @include translate(-100px, 0);
+}
+
+@mixin left {
+  opacity: 0;
+  @include translate(100px, 0);
+}
+
+@mixin cur($i, $j:0s) {
+  opacity: 1;
+  @include translate(0, 0);
+  @include transition($i, $j);
+}
+
+@mixin scalebig {
+  opacity: 0;
+  @include scale(0.1);
+}
+
+@mixin scalelittle {
+  opacity: 0;
+  @include scale(10);
+}
+
+@mixin scalecur($i, $j) {
+  opacity: 1;
+  @include scale(1);
+  @include transition($i, $j);
+}
+
+@mixin rotateY {
+  opacity: 0;
+  @include rotateY(180deg);
+}
+
+@mixin rotateYcur($i, $j) {
+  opacity: 1;
+  @include rotateY(0deg);
+  @include transition($i, $j);
+}
+
+/* 上下运动 */
+@keyframes UpDown {
+  50% {
+    transform: translateY(-30px);
+  }
+}
+
+/* 左上右下运动 */
+@keyframes LeftRight {
+  50% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+/* 右上左下运动 */
+@keyframes topRight {
+  50% {
+    transform: translate(30px, -30px);
+  }
+}

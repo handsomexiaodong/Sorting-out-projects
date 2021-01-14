@@ -1,0 +1,66 @@
+@charset "UTF-8";
+.curt{
+  .shift0{
+    @include shifting(0px,0px,1);
+   // visibility: visible;
+    @include speed(0.6s,0s,0);
+  }
+  .tit1{
+    animation: tit1 1s ease-in-out forwards;
+    @at-root {
+      @keyframes tit1 {
+        0%{
+          opacity: 0;
+          transform: translateY(-300px) scale(0.8);
+        }
+        60%{
+          opacity: 1;
+          transform: translateY(100px) scale(1.2);
+        }
+        80%{
+          transform: scale(0.9) translateY(-80px);
+        }
+        100%{
+          opacity: 1;
+          transform: translateY(0px) scale(1);
+        }
+      }
+    }
+  }
+  .tit2{
+    animation: tit2 1.2s 1s ease-in-out forwards;
+    @at-root {
+      @keyframes tit2 {
+        0%{
+          opacity: 0;
+          transform:perspective(500px) rotateX(90deg);
+        }
+        50%{
+          transform:perspective(500px) rotateX(-40deg);
+        }
+        70%{
+          transform:perspective(500px) rotateX(25deg);
+        }
+        90%{
+          transform:perspective(500px) rotateX(-15deg);
+        }
+        100%{
+          opacity: 1;
+          transform:perspective(500px) rotateX(0deg);
+        }
+      }
+    }
+  }
+  .box0{
+    transform: scale(1) translateY(0px);
+    @include speed(1s,0s,0);
+    opacity: 1;
+  }
+  .startButton{
+   // visibility: visible;
+    @include speed(0.6s,2s,0);
+    p{
+      animation: bigBtn1-1 1.2s 3s infinite;
+    }
+  }
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Werfen 质者荣耀</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <link href="../assets/css/lk-alert.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <script src="../assets/js/jquery.js"></script>
+    <script>
+        var _mayNum = 0;
+    </script>
+</head>
+
+<body class="perloader pagelock">
+    <div class="load">
+        <div class="modlist">
+            <div class="myload">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="loofd" id="loofd">
+                <p>0%</p>
+            </div>
+        </div>
+    </div>
+    <article class="game_one">
+        <section class="page box1">
+            <div class="logo"></div>
+            <div class="logo1"></div>
+            <div class="balloon"></div>
+            <div class="say1"></div>
+            <div class="say2"></div>
+            <div class="reveal">
+                <h3 class="title">血气检测数据的精准度<br />对临床医生的决策至关重要<br />多一分精确，多一份保障</h3>
+                <div class="gif">
+                    <img src="../assets/images/game3_12.gif" alt="">
+                </div>
+                <div class="introduce">GEM Premier 5000<br />实时质量保证功能<br />让检测结果更精准</div>
+            </div>
+            <div class="startGame">
+                <img src="../assets/images/game3_9.png" alt="" class="startImg">
+            </div>
+        </section>
+        <section class="page box2">
+            <div class="top">
+                <div class="integral">00</div>
+                <div class="time">
+                    <p class="bar"></p>
+                    <span class="clock"></span>
+                </div>
+            </div>
+            <div class="gameBox" id="gameBox"></div>
+        </section>
+    </article>
+    <div class="musiced" data-src="" style="z-index: 100;">
+        <!--http://assets.ilinkone.com/projectassets/york_100yesrs/media/bg.mp3,data-src为音乐的地址，如果无音乐此处为空-->
+        <div class="msyuddtd kuddtz"></div>
+        <div class="yifd bigyf"></div>
+        <div class="yifd smyf"></div>
+        <audio src="../assets/audio/bg.mp3" autoplay="" preload="auto" loop="-1" class="auido_play"></audio>
+    </div>
+    <!-- 弹窗 -->
+    <div class="alertBox hide">
+        <!-- 我知道了 -->
+        <div class="know hide">
+            <div class="know_btn"></div>
+        </div>
+        <!-- 分享弹窗 -->
+        <div class="shareBox">
+            <div class="up">
+                <span class="stars"></span>
+                <span class="light"></span>
+                <div class="get_integral">获得<span>50</span>积分</div>
+                <div class="assess">精准度接近完美<br />超越了85%的玩家！</div>
+            </div>
+            <div class="down">
+                <div class="shareBtn">
+                    <img src="../assets/images/game3_2.png" alt="">
+                    <span></span>
+                </div>
+                <div class="againGame">
+                    <img src="../assets/images/game3_3.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- 分享一下 -->
+        <div class="flaunt hide">
+            <img src="../assets/images/bg3.png" alt="">
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../assets/js/lk-alert.min.js"></script>
+    <script type="text/javascript" src="../assets/js/pixi.js"></script>
+    <script type="text/javascript" src="../assets/js/loading.js"></script>
+    <script type="text/javascript" src="../assets/js/loader.js"></script>
+    <script type="text/javascript" src="../assets/js/imgList.js"></script>
+    <!-- <script type="text/javascript" src="../assets/js/random.js"></script> -->
+    <script type="text/javascript" src="../assets/js/game.js?v=1.0"></script>
+    <script type="text/javascript" src="../assets/js/public.js"></script>
+    <script type="text/javascript" src="../assets/js/vconsole.min.js"></script>
+
+    <script>
+        new VConsole();
+        var gameNumber = 2;
+        var isCan = true;
+
+        function isCanPlayGame(fun) {
+            if (!isCan) {
+                return false
+            }
+            isCan = false;
+            if (gameNumber) {
+                gameNumber--;
+                isCan = true;
+                fun();
+            } else {
+                isCan = true;
+                lkAlertTips.textBox("您的游戏次数不足");
+            }
+        }
+        /* 游戏结束 */
+        function gameOver(obj, callFun) {
+            let fun = function () {} || callFun;
+            console.log('游戏结束', obj);
+        }
+    </script>
+
+</body>
+
+</html>

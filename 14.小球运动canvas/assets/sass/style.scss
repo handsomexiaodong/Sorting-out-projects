@@ -1,0 +1,864 @@
+@charset "UTF-8";
+@import '_Methods';
+@import '_quantity';
+@import '_animate';
+@import '_public';
+
+$time: 0.4s;
+$dtime: 0.3s;
+
+html,
+body {
+	overflow: hidden !important;
+}
+
+/* load.css */
+.load {
+	background: #512ca3;
+	z-index: 1000;
+}
+
+.load {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 100;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.load .myload {
+	text-align: center;
+	width: 100px;
+	height: 300px;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	top: 50%;
+	margin-top: -280px;
+}
+
+.load .myload span {
+	display: inline-block;
+	width: 10px;
+	background: #ffe946;
+	position: absolute;
+	bottom: 0;
+}
+
+.load .myload span:nth-child(1) {
+	height: 0;
+	left: 0;
+	-webkit-animation: s1 2s 0s infinite;
+}
+
+.load .myload span:nth-child(2) {
+	height: 0;
+	left: 20px;
+	-webkit-animation: s1 2s 0.2s infinite;
+}
+
+.load .myload span:nth-child(3) {
+	height: 0;
+	left: 40px;
+	-webkit-animation: s1 2s 0.4s infinite;
+}
+
+.load .myload span:nth-child(4) {
+	height: 0;
+	left: 60px;
+	-webkit-animation: s1 2s 0.6s infinite;
+}
+
+.load .myload span:nth-child(5) {
+	height: 0;
+	left: 80px;
+	-webkit-animation: s1 2s 0.8s infinite;
+}
+
+@-webkit-keyframes s1 {
+	50% {
+		height: 80px;
+	}
+}
+
+#loofd {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	color: #ffffff;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 60px;
+	margin-left: 0px;
+}
+
+/**音乐**/
+
+.musiced {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 80;
+	opacity: 0.8;
+}
+
+.msyuddtd {
+	background: url(../images/musice.png) no-repeat center center;
+	width: 54px;
+	height: 54px;
+}
+
+.kuddtz {
+	animation: kdd1 2s infinite linear;
+}
+
+.bigyf {
+	background: url(../images/yid1.png) no-repeat center center;
+	width: 25px;
+	height: 53px;
+	position: absolute;
+	left: 0px;
+	top: -80px;
+	animation: dd1 2s infinite;
+}
+
+.smyf {
+	background: url(../images/yid2.png) no-repeat center center;
+	width: 12px;
+	height: 30px;
+	position: absolute;
+	right: 0px;
+	top: -30px;
+	animation: dd1 1.5s infinite;
+}
+
+@keyframes dd1 {
+	0% {
+		transform: translateY(0px) scale(0.6);
+		opacity: 0.6;
+	}
+
+	100% {
+		transform: translateY(-50px) scale(0.6);
+		opacity: 0;
+	}
+}
+
+@keyframes kdd1 {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@font-face {
+	// font-family: 'special';
+	// src: url('../fonts/ffxfzt.ttf') format('truetype');
+}
+
+/* 内容区↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+.h_cover {
+	width: 100vw;
+	height: 100vh;
+	background: #512ca3;
+	overflow: hidden;
+
+	.h_box {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+
+		.consult {
+			width: 750px;
+			padding: 0 15px;
+			box-sizing: border-box;
+			@include setFont(18px, #ffffff, 36px, 2);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			z-index: 99;
+		}
+	}
+
+	section {
+		width: 100vw;
+		height: 100vh;
+		position: absolute !important;
+		left: 0;
+		top: 0;
+		overflow: hidden;
+	}
+
+	span {
+		display: inline-block;
+	}
+
+	.box0 {
+		background: url('../images/h_bg01.png') bottom center no-repeat;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		padding-top: 170px;
+		box-sizing: border-box;
+		z-index: 30;
+
+		.title {
+			@include setBackgroundImg(703px, 173px, 'h01.png');
+			@include down;
+		}
+
+		.theme {
+			margin: 120px auto;
+			@include setWh(703px, 498px);
+			@include right;
+			position: relative;
+
+			.explain {
+				@include setBackgroundImg(480px, 141px, 'h03.png');
+				@include absTL(0px, 0px);
+				@include op;
+			}
+
+			.tablet {
+				@include setBackgroundImg(349px, 335px, 'h02.png');
+				@include absBL(0px, 50%);
+				margin-left: -174.5px;
+			}
+		}
+
+		.btn01 {
+			@include up;
+			cursor: pointer;
+
+			span {
+				@include setBackgroundImg(382px, 93px, 'h_btn01.png');
+			}
+		}
+
+		.consult {
+			width: 750px;
+			padding: 0 15px;
+			box-sizing: border-box;
+			@include setFont(18px, #ffffff, 36px, 2);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+
+		/* 动画❤❤❤❤❤ */
+		&.on {
+			.title {
+				@include cur($time, $dtime);
+			}
+
+			.theme {
+				@include cur($time, $dtime * 2);
+
+				.explain {
+					@include bbs(cjl, 0.4s, 1.2s);
+				}
+			}
+
+			.btn01 {
+				@include cur($time, $dtime * 5);
+
+				span {
+					animation: bigBtn1-1 0.8s 2.1s infinite;
+				}
+			}
+		}
+
+		/* 动画❤❤❤❤❤ */
+	}
+
+	.box1 {
+		position: relative;
+		background: url('../images/h_bg02.png') bottom center no-repeat;
+		background-size: cover;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		padding-top: 50px;
+		box-sizing: border-box;
+		z-index: 10;
+
+		.level {
+			width: 750px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 45px;
+			box-sizing: border-box;
+
+			.theLast {
+				@include setBackgroundImg(207px, 62px, 'h15.png');
+				@include setFont(28px, #5530a9, 60px, 1);
+				font-weight: 800;
+				letter-spacing: 2px;
+			}
+
+			ul {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+
+				li {
+					img {
+						@include setWh(86px, 83px);
+					}
+				}
+
+				.mystical {
+					position: relative;
+
+					span {
+						@include setBackgroundImg(26px, 22px, 'h_icon01.png');
+						@include absTR(0px, 0px);
+					}
+				}
+			}
+		}
+
+		.plaype {
+			margin-top: 40px;
+			@include setWh(750px, 860px);
+			position: relative;
+
+			.game {
+				@include setBackgroundImg(594px, 745px, 'h14.png');
+				@include positionMiddle(594px, 745px);
+				margin-top: -340.5px;
+
+				.ball_exercise {
+					@include setWh(504px, 454px);
+					// background: rgba(175, 203, 203, .5);
+					@include positionMiddle(504px, 454px);
+				}
+			}
+
+			.h10 {
+				@include setBackgroundImg(135px, 145px, 'h10.png');
+				@include absTL(0px, 50px);
+			}
+
+			.h11 {
+				@include setBackgroundImg(228px, 133px, 'h11.png');
+				@include absTR(50px, 90px);
+			}
+
+			.h12 {
+				@include setBackgroundImg(86px, 139px, 'h12.png');
+				@include absTR(120px, 0px);
+			}
+
+			.h13 {
+				@include setBackgroundImg(96px, 103px, 'h13.png');
+				@include absBR(0px, 35px);
+			}
+		}
+
+		.surplus {
+			// font-family: 'special';
+			@include setFont(34px, #ffdc36, 108px, 1);
+			letter-spacing: 2px;
+		}
+
+		.btn02 {
+			cursor: pointer;
+
+			.start {
+				@include setBackgroundImg(382px, 93px, 'h_btn02.png');
+			}
+
+			.pause {
+				@include setBackgroundImg(382px, 93px, 'h_btn03.png');
+				display: none;
+			}
+		}
+
+		.btn02_pause {
+			.start {
+				display: none;
+			}
+
+			.pause {
+				display: block;
+			}
+		}
+
+		.consult {
+			width: 750px;
+			padding: 0 15px;
+			box-sizing: border-box;
+			@include setFont(18px, #ffffff, 36px, 2);
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	}
+}
+
+/* 引导页 */
+.guide {
+	@include setWh(750px, 100vh);
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 20;
+
+	.h05 {
+		@include setWh(406px, 94px);
+		@include absTR(40px, 65px);
+	}
+
+	.arrows {
+		display: inline-block;
+		@include setBackgroundImg(73px, 99px, 'h06.png');
+		@include absTL(244px, 350px);
+	}
+
+	.gotIt {
+		@include setBackgroundImg(414px, 453px, 'h07.png');
+		@include positionMiddle(414px, 453px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	.countdown {
+		@include setBackgroundImg(414px, 453px, 'h08.png');
+		@include positionMiddle(414px, 453px);
+
+		span {
+			// font-family: 'special';
+			display: inline-block;
+			@include setWh(127px, 127px);
+			@include setFont(100px, #fc1c89, 127px, 1);
+			@include positionMiddle(127px, 127px);
+			margin-top: -80.5px;
+		}
+
+		.btn05 {
+			display: none;
+			@include setBackgroundImg(247px, 60px, 'h_btn05.png');
+			@include absBL(78px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	.startHand {
+		@include setWh(382px, 93px);
+		// @include setBackgroundImg(382px, 93px, 'h_btn04.png');
+		@include absBL(95px, 50%);
+		margin-left: -191px;
+
+		.dot {
+			@include setBackgroundImg(37px, 37px, 'h09-1.png');
+			position: absolute;
+			top: 50%;
+			margin-top: -18.5px;
+			right: 35px;
+		}
+	}
+
+	.hand {
+		@include setBackgroundImg(89px, 70px, 'h09.png');
+		@include absBR(86px, 150px);
+	}
+
+	/* 动画❤❤❤❤❤ */
+	&.on {
+		.arrows {
+			animation: UpDown 0.8s infinite;
+		}
+
+		.hand {
+			animation: LeftRight 0.8s infinite;
+		}
+	}
+
+	/* 动画❤❤❤❤❤ */
+}
+
+/* 引导页--神秘关卡 */
+.mystery_guide {
+	@include setWh(750px, 100vh);
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 20;
+
+	.h19 {
+		@include setWh(94px, 94px);
+		@include absTR(40px, 70px);
+	}
+
+	.guidance {
+		@include setWh(260px, 200px);
+		position: relative;
+		top: 180px;
+		left: 310px;
+		@include op;
+
+		img {
+			@include setWh(171px, 94px);
+			@include absBL(0px, 0px);
+		}
+
+		.arrows {
+			@include setBackgroundImg(76px, 87px, 'h20.png');
+			@include absTR(0px, 0px);
+		}
+	}
+
+	/* 动画❤❤❤❤❤ */
+	&.on {
+		.guidance {
+			@include cur($time, $dtime);
+
+			.arrows {
+				animation: topRight 0.8s infinite;
+			}
+		}
+	}
+
+	/* 动画❤❤❤❤❤ */
+}
+
+/* 弹窗 */
+.h_alert {
+	@include setWh(750px, 100vh);
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 20;
+
+	/* Perfect 下一关 */
+	.Perfect {
+		@include setBackgroundImg(460px, 515px, 'h16.png');
+		@include positionMiddle(460px, 515px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* 太可惜了，再来一次 */
+	.pity {
+		@include setBackgroundImg(414px, 453px, 'h17.png');
+		@include positionMiddle(414px, 453px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* NICE--挑战成功 */
+	.win {
+		@include setBackgroundImg(460px, 515px, 'h23.png');
+		@include positionMiddle(460px, 515px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* 五次机会用完--挑战结束 */
+	.failure {
+		@include setBackgroundImg(414px, 453px, 'h18.png');
+		@include positionMiddle(414px, 453px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* 恭喜您，查看成绩 */
+	.congrats {
+		@include setBackgroundImg(460px, 515px, 'h22.png');
+		@include positionMiddle(460px, 515px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* 通关失败--再次挑战 */
+	.carnet_challenge {
+		@include setBackgroundImg(414px, 453px, 'h24.png');
+		@include positionMiddle(414px, 453px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+
+	/* 通关失败--查看成绩 */
+	.carnet_grade {
+		@include setBackgroundImg(414px, 453px, 'h25.png');
+		@include positionMiddle(414px, 453px);
+
+		a {
+			display: block;
+			@include setWh(247px, 60px);
+			@include absBL(98px, 50%);
+			margin-left: -123.5px;
+		}
+	}
+}
+
+@keyframes tdmove {
+	0% {
+		transform: translateX(5px);
+	}
+
+	50% {
+		transform: translateX(0px);
+	}
+
+	100% {
+		transform: translateX(-5px);
+	}
+}
+
+@keyframes fd {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+		transform-origin: bottom center;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+		transform-origin: bottom center;
+	}
+}
+
+@keyframes tbdistance {
+	0% {
+		transform: translateY(200px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(-200px);
+		opacity: 1;
+	}
+}
+
+@keyframes twinkle {
+	0% {
+		background: #fbc600;
+		opacity: 0.9;
+	}
+
+	100% {
+		background: #fbc600;
+		opacity: 0;
+	}
+}
+
+@media (min-height: 1600px) {
+
+	/* 内容区 */
+	.h_cover {
+		.box0 {
+			.theme {
+				margin: 200px auto;
+			}
+		}
+
+		.box1 {
+			.plaype {
+				margin-top: 200px;
+			}
+
+			.surplus {
+				margin-top: 100px;
+			}
+		}
+	}
+
+	/* 引导页 */
+	.guide {
+		.startHand {
+			@include absBL(130px, 50%);
+		}
+
+		.hand {
+			@include absBR(123px, 149px);
+		}
+	}
+}
+
+@media(max-height:1420px) {
+
+	/* 引导页 */
+	// .guide {
+	// 	.startHand {
+	// 		@include absBL(128px, 50%);
+	// 	}
+
+	// 	.hand {
+	// 		@include absBR(120px, 148px);
+	// 	}
+	// }
+}
+
+@media (max-height: 1380px) {
+
+	/* 引导页 */
+	.guide {
+		.h05 {
+			// @include absTR(20px, 65px);
+		}
+
+		.startHand {
+			// @include absBL(128px, 50%);
+		}
+
+		.hand {
+			// @include absBR(120px, 148px);
+		}
+	}
+}
+
+@media (max-height: 1300px) {
+
+	/* 引导页 */
+	.guide {
+		.h05 {
+			@include absTR(20px, 65px);
+		}
+
+		.startHand {
+			@include absBL(75px, 50%);
+		}
+
+		.hand {
+			@include absBR(67px, 148px);
+		}
+	}
+}
+
+@media(max-height:1280px) {
+
+	/* 引导页 */
+	.guide {
+		.h05 {
+			@include absTR(20px, 65px);
+		}
+
+		.startHand {
+			@include absBL(75px, 50%);
+		}
+
+		.hand {
+			@include absBR(67px, 148px);
+		}
+	}
+}
+
+@media (max-height: 1230px) {
+
+	/* 内容区 */
+	.h_cover {
+		.box0 {
+			padding-top: 90px;
+		}
+
+		.box1 {
+			padding-top: 20px;
+
+			.plaype {
+				margin-top: 0px;
+			}
+
+			.surplus {
+				margin-top: -40px;
+			}
+		}
+	}
+
+	/* 引导页 */
+	.guide {
+		.h05 {
+			@include absTR(20px, 65px);
+		}
+
+		.startHand {
+			@include absBL(75px, 50%);
+		}
+
+		.hand {
+			@include absBR(67px, 148px);
+		}
+	}
+
+	/* 引导页--神秘关卡 */
+	.mystery_guide {
+		.h19 {
+			@include absTR(20px, 70px);
+		}
+	}
+}
+
+@media(max-height:1200px) {
+
+	/* 引导页 */
+	.guide {
+		.h05 {
+			@include absTR(20px, 65px);
+		}
+
+		.startHand {
+			@include absBL(75px, 50%);
+		}
+
+		.hand {
+			@include absBR(67px, 148px);
+		}
+	}
+}
+
+@media (max-height: 1100px) {}

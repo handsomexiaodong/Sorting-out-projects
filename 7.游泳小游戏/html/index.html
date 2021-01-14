@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>中行游泳</title>
+    <meta charset="utf-8" />
+    <!--    <meta name="viewport" content="width=750,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">-->
+    <!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        //console.log(self);
+        if (self != top && self.frameElement.clientWidth && self.frameElement.clientWidth != 750) {
+            var src = self.frameElement.src;
+            let w = self.frameElement.clientWidth;
+            let h = self.frameElement.clientHeight;
+            let aw = 750;
+            let sacle = w / 750;
+            let ah = h / sacle;
+            let target = self.frameElement;
+            target.style.position = 'fixed';
+            target.style.width = '750px';
+            target.style.height = ah + 'px';
+            target.style.left = '50%';
+            target.style.top = '50%';
+            target.style.transform = `translate(-50%, -50%) scale(${sacle})`;
+            target.style.overflow = 'hidden';
+            target.src = src;
+        } else {
+            var phoneScale = parseInt(window.screen.width) / 750;
+            if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+                var version = parseFloat(RegExp.$1);
+                if (version > 2.3) {
+                    //alert(parseInt(window.screen.width));
+                    document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+                } else {
+                    document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+                }
+            } else {
+                document.write('<meta name="viewport" content="width=750, user-scalable=no,target-densitydpi=device-dpi">');
+            }
+        }
+
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <script src="../assets/js/jquery.js"></script>
+    <script>
+        var _mayNum = 0;
+    </script>
+</head>
+
+<body>
+    <article class="pageBox pagelock">
+        <section class="loadPage">
+            <div class="mingBox">
+                <p class="boy"></p>
+                <div class="jindBox">
+                    <div>
+                        <p><span></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mainPage">
+            <section class="page bg0">
+                <div class="wh1200d m_sacle96">
+                    <div class="tit1"></div>
+                    <div class="tit2"></div>
+                    <div class="box0"></div>
+                    <div class="startButton shift0">
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+            <section class="page gamePage bg2">
+                <div id="gameContainer">
+
+                </div>
+                <div class="gameTipsBox">
+                    <div class="disBoxCont">
+                        <p>0</p>
+                    </div>
+                    <div class="timeOutBox">
+                        <p>60.00</p>
+                    </div>
+                </div>
+                <div class="gameTipsRule">
+                    <div class="tipsTxt">
+                        <h3><span>依次点击左右箭头，</span>使人物前进<br>手速越快前进速度越快</h3>
+                        <div class="startButtonGame"></div>
+                    </div>
+                    <div class="buttonETIPS">
+                        <img src="../assets/images/img26.png" />
+                        <img src="../assets/images/img27.png" />
+                    </div>
+                </div>
+            </section>
+            <section class="page gameOver bg1">
+                <div class="lightBox"></div>
+                <div class="wh1200d m_sacle96">
+                    <div class="box1 shift0">
+                        <p class="s1 shift0"></p>
+                        <p class="s2 shift0"></p>
+                        <p class="s3 shift0"></p>
+                        <div class="tit3"></div>
+                        <div class="prizeTit">
+                            <img src="../assets/images/img9.png" />
+                            <p>游刃有余</p>
+                        </div>
+                        <div class="gameText">
+                            <h2>您获得了460分，提升20活力</h2>
+                            <h3>点评</h3>
+                            <div class="textListBox">
+                                <p>有实力，无所谓<br />到哪都是你的主场show！</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footButton shift0">
+                        <p class="shareButton tips"><img src="../assets/images/img12.png" /> </p>
+                        <!--分享提示 tips-->
+                        <p class="replayGame"><img src="../assets/images/img13.png" /> </p>
+                        <a href="" class="backHome"><img src="../assets/images/img14.png" /> </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <div class="musiced hide" data-src="" style="z-index: 100;">
+            <!--http://assets.ilinkone.com/projectassets/york_100yesrs/media/bg.mp3,data-src为音乐的地址，如果无音乐此处为空-->
+            <div class="msyuddtd kuddtz"></div>
+            <div class="yifd bigyf"></div>
+            <div class="yifd smyf"></div>
+            <audio src="../assets/audio/bg.mp3" autoplay="" preload="auto" loop="-1" class="auido_play"></audio>
+        </div>
+        <div class="sharePage">
+            <img src="../assets/images/img29.png" />
+        </div>
+    </article>
+
+    <script>
+        var base_url = '../assets/images/';
+    </script>
+    <script src="../assets/js/pixi.js"></script>
+    <script src="../assets/js/imgList.js"></script>
+    <script type="text/javascript" src="../assets/js/public.js"></script>
+    <!--<script src="../assets/js/main.js"></script>-->
+    <script src="../assets/js/main_lk_dev.js?v=1.0"></script>
+    <script src="../assets/lkalert/lk-alert.js"></script>
+    <script type="text/javascript" src="../assets/js/vconsole.min.js"></script>
+    <script type="text/javascript">
+        new VConsole();
+        var gameNumber = 2;
+        var isCan = true;
+
+        function isCanPlayGame(fun) {
+            if (!isCan) {
+                return false
+            }
+            isCan = false;
+            if (gameNumber) {
+                gameNumber--;
+                isCan = true;
+                fun();
+            } else {
+                isCan = true;
+                lkAlertTips.textBox("您的游戏次数不足");
+            }
+        }
+
+        function gameOver(obj, fun) {
+            console.log('游戏结束', obj);
+            fun();
+        }
+    </script>
+</body>
+
+</html>

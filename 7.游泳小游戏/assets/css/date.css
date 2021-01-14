@@ -1,0 +1,59 @@
+﻿
+#datescroll div{float:left;margin-top:15px;height:400px;}
+#datescroll_datetime div{float: left;margin-left: 10%;padding-right: 22px;}
+#yearwrapper{position: absolute;left:15px;top:0;bottom: 60px;width:33.333%;}
+#monthwrapper{position: absolute;left: 33.333%;top:0;bottom: 60px;width:33.33%;}
+#daywrapper{position: absolute;left:63%;top:0;bottom: 60px;width:33.33%;}
+#Hourwrapper{position: absolute;left: 0;top:195px;bottom: 68px;width:80%;}
+#Minutewrapper{position: absolute;left: 26%;top:195px;bottom: 68px;width:80%;}
+#Secondwrapper{position: absolute;left: 50%;top:195px;bottom: 68px;width:80%;}
+#Hourwrapper ul li{color: #898989;font-size: 12px;}
+#Minutewrapper ul li{color: #898989;font-size: 12px;}
+#Secondwrapper ul li{color: #898989;font-size: 12px;}
+#yearwrapper ul li{color: #333;font-size: 28px;height:80px;line-height:80px;}
+#monthwrapper ul li{color: #333;font-size: 28px;height:80px;line-height:80px;}
+#monthwrapper ul li.crently,#yearwrapper ul li.crently,#daywrapper ul li.crently{}
+#daywrapper ul li{color: #333;font-size: 28px;height:80px;line-height:80px;}
+
+
+#markhour{position:relative; margin-left: 62px;top:-2px;}
+#markminut{position:relative; margin-left: 58px;top:-2px;}
+#marksecond{position:relative; margin-left: 68px;top:-2px;}
+#dateheader{width: 100%;height:50px;background: #79C12F;text-align: center;color: #eee;line-height: 50px;font-size: 20px;}
+#setcancle ul{display: flex;justify-content: space-between;align-items: center; padding: 0 30px; background: #eee}
+#setcancle ul li{ width: 80px;font-size:28px;line-height: 80px; text-align: center;}
+#setcancle ul li:last-child:before{}
+#datePlugin{overflow:hidden;position:fixed;left:0;top:0;z-index:99999;background:rgba(0,0,0,0.5);width:100%;height:100%;display:none;}
+#datePlugin.show{display:block;}
+#datePage{font-size: 22px;width:100%;background: #fff;z-index:9999999;padding-top:80px;position:fixed;
+    left:0%;bottom:0%;z-index:99999;background:#fff;overflow:hidden;}
+#datetitle{width: 100%;height:50px;background: #79C12F;text-align: center;color: #fff;line-height: 50px;font-size: 20px;font-family:'microsoft yahei';display:none;}
+#datetitle h1{font-weight:normal;}
+#datemark{font-size:28px;left:0%;width: 100%;height:78px;border-top:1px solid #eee;border-bottom:1px solid #eee;position:absolute;top:175px;border-radius:3px;-webkit-box-shadow:0 0 12px rgba(255,136,0,.3);box-shadow:0 0 12px rgba(255,136,0,.3)}
+#datemark a{position:relative;width:20%;margin:0 6.666%;height:46px;float:left;}
+#timemark{font-size: 18px;left:5%;width:90%;height: 20px;position:absolute;top:242px;background:#e6e6e6;border:1px solid #e6e6e6;display:none;}
+#datescroll{width:90%;padding:10px 0;margin:0 auto;height:400px;text-align:center;line-height: 40px;}
+#datescroll_datetime{display: none;background:#F8F8F8;width:94%; margin:10px 3%;margin-top: 10px;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;line-height: 40px;}
+#yearwrapper ul,#monthwrapper ul,#daywrapper ul{}
+#Hourwrapper ul,#Minutewrapper ul,#Secondwrapper ul{width:40%;}
+#dateFooter{width:100%;background:#fff;height:50px; position: absolute;left: 0px;
+    top: 0px;}
+#datePage>section{
+    position: relative;
+}
+.DshowPop::before,.DshowPop:after{
+    content: "";
+    display: none;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 10;
+}
+.DshowPop::before{
+    top: 0px;
+    background-image: linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.DshowPop::after{
+    bottom: 0px;
+    background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+}

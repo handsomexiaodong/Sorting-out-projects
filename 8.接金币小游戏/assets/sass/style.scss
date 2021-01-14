@@ -1,0 +1,606 @@
+@charset "utf-8";
+@import '_Methods';
+@import '_quantity';
+@import '_public';
+@import '_animate';
+
+$time: 0.4s;
+$dtime: 0.3s;
+
+html,
+body {
+	background: #ffffff;
+}
+
+/* load.css */
+.load {
+	background-color: #000000;
+	background-position: center center;
+	background-repeat: no-repeat;
+	z-index: 1000;
+}
+
+.load {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 100;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.load .myload {
+	text-align: center;
+	width: 100px;
+	height: 300px;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	top: 50%;
+	margin-top: -280px;
+}
+
+.load .myload span {
+	display: inline-block;
+	width: 10px;
+	background: #ffffff;
+	position: absolute;
+	bottom: 0;
+}
+
+.load .myload span:nth-child(1) {
+	height: 0;
+	left: 0;
+	-webkit-animation: s1 2s 0s infinite;
+}
+
+.load .myload span:nth-child(2) {
+	height: 0;
+	left: 20px;
+	-webkit-animation: s1 2s 0.2s infinite;
+}
+
+.load .myload span:nth-child(3) {
+	height: 0;
+	left: 40px;
+	-webkit-animation: s1 2s 0.4s infinite;
+}
+
+.load .myload span:nth-child(4) {
+	height: 0;
+	left: 60px;
+	-webkit-animation: s1 2s 0.6s infinite;
+}
+
+.load .myload span:nth-child(5) {
+	height: 0;
+	left: 80px;
+	-webkit-animation: s1 2s 0.8s infinite;
+}
+
+.loadingBar {
+	width: 480px;
+	height: 12px;
+	background: #165aa1;
+	border-radius: 9px;
+	border: 3px solid #165aa1;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -6px;
+	margin-left: -240px;
+	overflow: hidden;
+
+	span {
+		display: block;
+		height: 12px;
+		background: #fff;
+		border-radius: 6px;
+	}
+}
+
+@-webkit-keyframes s1 {
+	50% {
+		height: 80px;
+	}
+}
+
+#loofd {
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 30px;
+	color: #ffffff;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: 60px;
+	margin-left: 0px;
+
+	p {
+		position: absolute;
+		left: 50%;
+		margin-left: -75px;
+		width: 150px;
+	}
+}
+
+/**音乐**/
+
+.musiced {
+	width: 54px;
+	height: 54px;
+	position: fixed;
+	right: 15px;
+	top: 100px;
+	z-index: 100;
+	opacity: 0.8;
+}
+
+.msyuddtd {
+	background: url(../images/musice.png) no-repeat center center;
+	width: 54px;
+	height: 54px;
+}
+
+.kuddtz {
+	animation: kdd1 2s infinite linear;
+}
+
+.bigyf {
+	background: url(../images/yid1.png) no-repeat center center;
+	width: 25px;
+	height: 53px;
+	position: absolute;
+	left: 0px;
+	top: -80px;
+	animation: dd1 2s infinite;
+}
+
+.smyf {
+	background: url(../images/yid2.png) no-repeat center center;
+	width: 12px;
+	height: 30px;
+	position: absolute;
+	right: 0px;
+	top: -30px;
+	animation: dd1 1.5s infinite;
+}
+
+@keyframes dd1 {
+	0% {
+		transform: translateY(0px) scale(0.6);
+		opacity: 0.6;
+	}
+
+	100% {
+		transform: translateY(-50px) scale(0.6);
+		opacity: 0;
+	}
+}
+
+@keyframes kdd1 {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@font-face {
+	font-family: 'hxb';
+	src: url('../fonts/hxb.otf') format('truetype');
+}
+
+/* 内容区↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
+/* 公共 */
+.logo {
+	@include setBackgroundImg(211px, 68px, "logo.png");
+	@include absTL(30px, 20px);
+	z-index: 9;
+}
+
+.logo1 {
+	@include setBackgroundImg(211px, 63px, "logo1.png");
+	@include absTR(30px, 20px);
+	z-index: 9;
+}
+
+.game_one {
+	@include setBackgroundImg(100vw, 100vh, "bg1.png");
+	background-position: bottom center;
+	@include setBgSize(0);
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.box1 {
+	padding-top: 130px;
+
+	.balloon {
+		@include setBackgroundImg(66px, 248px, "game3_8.png");
+		@include absTL(280px, 0);
+		@include upRight;
+	}
+
+	.say1 {
+		@include setBackgroundImg(177px, 128px, "game3_10.png");
+		@include absTL(910px, 0);
+		z-index: 9;
+	}
+
+	.say2 {
+		@include setBackgroundImg(134px, 95px, "game3_11.png");
+		@include absTR(1010px, 0);
+		z-index: 9;
+	}
+
+	.reveal {
+		@include setBackgroundImg(680px, 938px, "game3_0.png");
+		margin: 0 auto;
+		position: relative;
+		padding-top: 20px;
+		box-sizing: border-box;
+		@include left;
+
+		.title {
+			width: 100%;
+			height: 154px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include setFont(36px, #ffffff, 44px, 1);
+		}
+
+		.gif {
+			@include setWh(641px, 360px);
+			margin: 0 auto;
+			margin-top: 70px;
+			position: relative;
+
+			img {
+				@include ObjImg();
+			}
+		}
+
+		.introduce {
+			width: 100%;
+			height: 200px;
+			margin-top: 85px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			@include setFont(32px, #ffffff, 50px, 1);
+			letter-spacing: 1px;
+			font-weight: 800;
+		}
+	}
+
+	.startGame {
+		width: 321px;
+		margin: 0 auto;
+		margin-top: 30px;
+		@include up;
+	}
+
+	&.on {
+		.balloon {
+			@include cur($time, $dtime);
+		}
+
+		.reveal {
+			@include cur($time, $dtime);
+		}
+
+		.startGame {
+			@include cur($time, $dtime*2);
+		}
+
+		.startImg {
+			animation: bigBtn1-1 0.8s 2.1s infinite;
+		}
+	}
+}
+
+.box2 {
+	@include setBackgroundImg(100vw, 100vh, "bg2.png");
+	background-position: bottom center;
+	@include setBgSize(0);
+	position: relative;
+
+	.top {
+		@include setBackgroundImg(750px, 178px, "game3_16.png");
+		position: absolute;
+		z-index: 99;
+		margin: 0 auto;
+		padding-top: 40px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: space-around;
+
+		.time {
+			@include setBackgroundImg(323px, 69px, "game3_14.png");
+			position: relative;
+			margin-top: 10px;
+			margin-left: 10px;
+			padding: 14px 10px 29px 24px;
+			box-sizing: border-box;
+
+			.bar {
+				width: 100%;
+				height: 100%;
+				background-color: #f69b1b;
+				border-radius: 13px;
+				box-shadow: 5px 2px 8px #fe5a86;
+			}
+
+			.clock {
+				@include setBackgroundImg(85px, 71px, "game3_15.png");
+				@include absTL(-7px, -15px);
+			}
+
+			&.on {
+				.clock {
+					animation: wobble 1s 0.2s ease-in-out 3;
+				}
+			}
+		}
+
+		.integral {
+			@include setBackgroundImg(215px, 67px, "game3_17.png");
+			padding-top: 20px;
+			padding-left: 90px;
+			padding-right: 10px;
+			box-sizing: border-box;
+			@include setFont(26px, #ffffff, 30px, 2);
+			letter-spacing: 2px;
+			font-weight: 800;
+		}
+	}
+
+	.gameBox {
+		@include absTL(0, 0);
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/* 弹窗 */
+.alertBox {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .9);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+
+	/* 分享弹窗 */
+	.shareBox {
+		@include positionMiddle(550px, 850px);
+		text-align: center;
+		font-weight: 700;
+
+		.up {
+			@include setBackgroundImg(536px, 555px, "game3_4.png");
+			margin: 0 auto;
+			position: relative;
+			@include down;
+
+			.stars {
+				display: block;
+				@include setBackgroundImg(280px, 165px, "game3_6.png");
+				@include absTL(-15px, 210px);
+			}
+
+			.light {
+				display: block;
+				@include setBackgroundImg(482px, 168px, "game3_5.png");
+				@include absBL(-20px, -40px);
+			}
+
+			.get_integral,
+			.assess {
+				font-weight: 700;
+				letter-spacing: 2px;
+			}
+
+			.get_integral {
+				@include setWh(325px, 60px);
+				@include absTL(270px, 130px);
+				@include setFont(36px, #fcf2a0, 60px, 0);
+			}
+
+			.assess {
+				@include setWh(437px, 163px);
+				@include absTL(360px, 80px);
+				@include setFont(36px, #ca6d26, 46px, 0);
+			}
+		}
+
+		.down {
+			margin-top: 100px;
+		}
+
+		.shareBtn,
+		.againGame {
+			@include setWh(317px, 123px);
+			margin: 0 auto;
+			margin-top: 30px;
+			@include up;
+		}
+
+		.shareBtn {
+			position: relative;
+
+			span {
+				display: block;
+				@include setBackgroundImg(234px, 60px, "game3_1.png");
+				@include absTR(-60px, -120px);
+				@include op;
+			}
+		}
+	}
+
+	/* 炫耀一下 */
+	.flaunt {
+		@include absTR(30px, 30px);
+	}
+
+	/* 我知道了 */
+	.know {
+		@include positionMiddle(662px, 789px);
+		@include setIconBackgroundImg("game3_13.png");
+		margin-left: -331px;
+		@include down;
+
+		.know_btn {
+			@include setWh(318px, 123px);
+			@include absTL(660px, 180px);
+		}
+	}
+
+	&.cur {
+		.shareBox {
+			.up {
+				@include cur($time, $dtime);
+
+				.stars {
+					animation: loom 2s $dtime*2 ease-in-out infinite;
+				}
+
+				.light {
+					animation: loom 1s $dtime*2.2 ease-in-out infinite;
+				}
+			}
+
+			.shareBtn {
+				@include cur($time, $dtime*2);
+
+				span {
+					@include cur($time, $dtime*4);
+				}
+			}
+
+			.againGame {
+				@include cur($time, $dtime*3);
+			}
+		}
+
+		.know {
+			@include cur($time, $dtime);
+		}
+	}
+}
+
+/* 内容区↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
+
+@keyframes tdmove {
+	0% {
+		transform: translateX(5px);
+	}
+
+	50% {
+		transform: translateX(0px);
+	}
+
+	100% {
+		transform: translateX(-5px);
+	}
+}
+
+@keyframes fd {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+		transform-origin: bottom center;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+		transform-origin: bottom center;
+	}
+}
+
+@keyframes tbdistance {
+	0% {
+		transform: translateY(200px);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(-200px);
+		opacity: 1;
+	}
+}
+
+@keyframes twinkle {
+	0% {
+		background: #fbc600;
+		opacity: 0.9;
+	}
+
+	100% {
+		background: #fbc600;
+		opacity: 0;
+	}
+}
+
+@keyframes rotY {
+	0% {
+		-webkit-transform: rotateY(0deg);
+		-moz-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		-o-transform: rotateY(0deg);
+		transform: rotateY(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotateY(180deg);
+		-moz-transform: rotateY(180deg);
+		-ms-transform: rotateY(180deg);
+		-o-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+	}
+}
+
+@media (min-height: 1624px) {}
+
+@media (max-height: 1280px) {}
+
+
+@media (max-height: 1240px) {}
+
+
+@media (max-height: 1200px) {
+	.box1 {
+		padding-top: 110px;
+
+		.startGame {
+			margin-top: -30px;
+		}
+
+		&.on {
+			.reveal {
+				transform: scale(0.92);
+				margin-top: -40px;
+			}
+		}
+	}
+
+}
+
+@media (max-height: 1100px) {}
+
+@media (max-height: 1000px) {}
