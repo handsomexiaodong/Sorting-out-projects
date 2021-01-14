@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>九宫格抽奖</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <link href="./css/style.css" rel="stylesheet" />
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <article class="h_prize">
+        <div class="prizeBox">
+            <div class="flower1"></div>
+            <div class="flower2"></div>
+            <div class="flower3"></div>
+            <div class="light"></div>
+            <ul class="lottoBox">
+                <li class="lotto_item">
+                    <img src="./images/h52.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h53.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h54.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h54.png" alt="">
+                </li>
+                <li class="lottoBtn"></li>
+                <li class="lotto_item">
+                    <img src="./images/h55.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h53.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h57.png" alt="">
+                </li>
+                <li class="lotto_item">
+                    <img src="./images/h56.png" alt="">
+                </li>
+            </ul>
+        </div>
+    </article>
+    <script>
+        let stopStep = 0; //表示最终奖品位置
+        let runT = null;
+        let step = -1;
+        let during = 2;
+        let indexArr = [0, 1, 2, 4, 7, 6, 5, 3]; //奖品对应的下标
+        $(".lottoBtn").click(function () {
+            runT = setTimeout(runF, 100);
+        })
+
+        function runF() {
+            let index = 0
+            if (step >= (32 + stopStep)) {
+                clearTimeout(runT); //停止转动
+                index = step % 8
+                step = stopStep;
+                $(".lotto_item").eq(indexArr[index]).addClass("on").siblings(".lotto_item").removeClass("on");
+                return;
+            }
+            if (step >= (24 + stopStep)) {
+                during += 1;
+            } else {
+                if (during <= 2) {
+                    during = 2
+                }
+                during--
+            }
+            step++;
+            index = step % 8;
+            $(".lotto_item").eq(indexArr[index]).addClass("on").siblings(".lotto_item").removeClass("on");
+            runT = setTimeout(runF, during * 50);
+        }
+    </script>
+</body>
+
+</html>

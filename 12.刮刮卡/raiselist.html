@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>我的加息券</title>
+    <style>
+        .loan .item {
+            width: 100%;
+            max-width: 720px;
+            margin-bottom: 15px;
+            height: 130px;
+            padding: 0px 110px 0px 0;
+            display: inline-block;
+            box-shadow: 2px 2px 2px #d8d8d8;
+            box-sizing: border-box;
+            border-radius: 3px;
+            position: relative;
+        }
+        .loan .new {
+            background-color: #e61e25;
+        }
+        .loan .brief {
+            padding: 0 10px;
+        }
+        .loan .new .brief .title {
+            color: #FFF;
+            opacity: 0.7;
+        }
+        .loan .new .brief .title span {
+            font-size: 12px;
+        }
+        .loan .new .brief dt {
+            color: #FFF;
+        }
+        .loan .brief dt {
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .loan .brief dd {
+            line-height: 1.7;
+            overflow: hidden;
+        }
+        .loan .new .brief .cont {
+            color: #FFF;
+        }
+        .loan .brief .cont {
+            font-size: 18px;
+        }
+        .loan .brief .l {
+            float: left;
+        }
+        .loan .brief .r {
+            float: right;
+        }
+        .loan .new .rate {
+            border-left-color: #c0191f;
+        }
+        .loan .rate {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 110px;
+            height: 130px;
+            text-align: center;
+            padding-left: 2px;
+            padding-top: 10px;
+            border-left: 1px dashed #d5d5d5;
+            background-color: transparent;
+            box-sizing: border-box;
+        }
+        .loan .rate:before {
+            top: -6px;
+        }
+        .loan .rate:before, .loan .rate:after {
+            position: absolute;
+            content: "";
+            width: 12px;
+            height: 12px;
+            z-index: 2;
+            left: -6px;
+            bottom: -6px;
+            background-color: #FFF;
+            border-radius: 6px;
+        }
+        /*.loan .flags {
+            width: 100%;
+            height: 45px;
+        }*/
+        .loan .new .rate h6 {
+            color: #FFF;
+            margin: 24px auto;
+        }
+        .loan .rate h6 {
+            line-height: 1;
+            font-size: 30px;
+            font-weight: 700;
+            /*color: #e61e25;*/
+        }
+        .loan .rate .extra {
+            font-size: 14px;
+            line-height: 1;
+        }
+        .loan .new .rate .extra span {
+            color: #FFF;
+        }
+        .loan .rate .extra span {
+            display: block;
+            margin-top: 6px;
+            font-weight: 400;
+        }
+        .loan .rate small {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="mybox loan">
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>专享加息卡</dt>
+            <dd class="title">
+                <span class="l">起投金额</span>
+                <span class="r">起投周期</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">有效期至：</span>
+                <span class="r">2017.11.01 23:59:59</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>VIP客户专享</span>
+            </p>
+        </div>
+    </div>
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>投资加息券</dt>
+            <dd class="title">
+                <span class="l">起投金额(元)</span>
+                <span class="r">投资时间</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">使用时间:</span>
+                <span class="r">2017.09.01~11.01</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>去使用</span>
+            </p>
+        </div>
+    </div>
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>投资加息券</dt>
+            <dd class="title">
+                <span class="l">起投金额(元)</span>
+                <span class="r">投资时间</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">使用时间:</span>
+                <span class="r">2017.09.01~11.01</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>去使用</span>
+            </p>
+        </div>
+    </div>
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>投资加息券</dt>
+            <dd class="title">
+                <span class="l">起投金额(元)</span>
+                <span class="r">投资时间</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">使用时间:</span>
+                <span class="r">2017.09.01~11.01</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>去使用</span>
+            </p>
+        </div>
+    </div>
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>投资加息券</dt>
+            <dd class="title">
+                <span class="l">起投金额(元)</span>
+                <span class="r">投资时间</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">使用时间:</span>
+                <span class="r">2017.09.01~11.01</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>去使用</span>
+            </p>
+        </div>
+    </div>
+    <div class="item new">
+        <!--<b class="icon"></b>-->
+        <!-- 概况 -->
+        <dl class="brief">
+            <dt>投资加息券</dt>
+            <dd class="title">
+                <span class="l">起投金额(元)</span>
+                <span class="r">投资时间</span>
+            </dd>
+            <dd class="cont">
+                <span class="l">1000<small>元</small></span>
+                <span class="r">3个月</span>
+            </dd>
+            <dd class="title">
+                <span class="l">使用时间:</span>
+                <span class="r">2017.09.01~11.01</span>
+            </dd>
+        </dl>
+        <!-- 利率 -->
+        <div class="rate">
+            <!--<p class="flags"></p>-->
+            <h6>1<small>%</small></h6>
+            <p class="extra" onClick="location.href='index.html'">
+                <span>去使用</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

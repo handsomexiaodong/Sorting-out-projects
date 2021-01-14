@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>活动倒计时</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .clock_box {
+            width: 100%;
+            padding-top: 90px;
+            box-sizing: border-box;
+            font-size: 50px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .clock_box>div {
+            display: flex;
+            color: #f45;
+        }
+    </style>
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <article class="clock_box">
+        <div class="h">
+            <div class="num1">0</div>
+            <div class="num2">0</div>
+        </div>
+        时
+        <div class="m">
+            <div class="num1">0</div>
+            <div class="num2">0</div>
+        </div>
+        分
+        <div class="s">
+            <div class="num1">0</div>
+            <div class="num2">0</div>
+        </div>
+        秒
+    </article>
+    <script type="text/javascript">
+        let starting = '2021-1-10 10:58:00'; //活动开始时间
+        let cputimer = setInterval(() => {
+            getDate(starting, $(".clock_box"));
+        }, 1000)
+
+        function getDate(time, obj) {
+            let startTime = dataTime(time);
+            let nowTime = new Date().getTime() / 1000;
+            let timeDiff = (startTime - nowTime) <= 0 ? 0 : Math.floor(startTime - nowTime);
+            // console.log(timeDiff);
+            if (timeDiff <= 0) {
+                window.location.replace("./index.html");
+                clearInterval(cputimer);
+            } else {
+                let day = Math.floor(timeDiff / 86400);
+                timeDiff = timeDiff % 86400;
+                let hour = Math.floor(timeDiff / 3600) + (parseInt(day) * 24);
+                timeDiff %= 3600;
+                let minute = Math.floor(timeDiff / 60);
+                timeDiff %= 60;
+                obj.find(".h").children(".num1").html(`${addZero(hour).split("")[0]}`);
+                obj.find(".h").children(".num2").html(`${addZero(hour).split("")[1]}`);
+                obj.find(".m").children(".num1").html(`${addZero(minute).split("")[0]}`);
+                obj.find(".m").children(".num2").html(`${addZero(minute).split("")[1]}`);
+                obj.find(".s").children(".num1").html(`${addZero(timeDiff).split("")[0]}`);
+                obj.find(".s").children(".num2").html(`${addZero(timeDiff).split("")[1]}`);
+                // console.log(`${addZero(day)}天${addZero(hour)}时${addZero(minute)}分${addZero(timeDiff)}秒`);
+            }
+        }
+        /* 补零 */
+        function addZero(n) {
+            if (n < 10) {
+                return "0" + n
+            } else {
+                return `${n}`
+            }
+        }
+        /* 时间转换成秒 */
+        function dataTime(time) {
+            let [year, month, day] = time.split(" ")[0].split("-");
+            let [h, m, s] = time.split(" ")[1].split(":");
+            let timeS = new Date(year, month - 1, day).getTime();
+            timeS = timeS / 1000 + Number(h) * 3600 + Number(m) * 60 + Number(s);
+            return timeS;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+[
+	{
+		"date": "2021-07-08",
+		"open": true,
+		"show": "2000"
+	}, {
+		"date": "2021-08-09",
+		"open": false,
+		"show": "关门"
+	}, {
+		"date": "2021-12-20",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-21",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-22",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-23",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-24",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-25",
+		"open": true,
+		"show": "3000"
+	}, {
+		"date": "2021-12-26",
+		"open": false,
+		"show": "关门"
+	}, {
+		"date": "2021-12-27",
+		"open": true,
+		"show": "3000"
+	}
+]

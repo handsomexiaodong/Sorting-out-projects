@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html style="font-size: 40px;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="layoutmode" content="standard">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="renderer" content="webkit">
+    <meta name="wap-font-scale" content="no">
+    <meta content="telephone=no" name="format-detection">
+    <meta http-equiv="Pragma" content="no-cache">
+    <script type="text/javascript">
+        var _htmlFontSize = (function () {
+            var clientWidth = document.documentElement ? document.documentElement.clientWidth : document.body.clientWidth;
+            if (clientWidth > 640) clientWidth = 640;
+            document.documentElement.style.fontSize = clientWidth * 1 / 16 + "px";
+            return clientWidth * 1 / 16;
+        })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/base.min.css"/>
+
+</head>
+
+<body style="width: 100%;height: 100%;">
+<div class="main_box" style="background-color: #eee">
+    <div class="box">
+        <div class="bg_in">
+            <div class="title">•&nbsp;刮奖区&nbsp;•</div>
+        </div>
+        <div class="content">
+            <div id="mask_img_bg"><span class="cont-span"></span>
+                <!--<img/>-->
+            </div>
+            <img id="redux" src="images/layer.png"/>
+        </div>
+        <!--次数-->
+        <div class="hint-num">
+            <h4>今日你还有 <strong class="clicknum">0</strong> 次刮奖机会</h4>
+        </div>
+        <div class="take"><a href="raiselist.html">查看获奖记录</a></div>
+        <section class="main-sec">
+            <div class="m-title"><h3>活动说明</h3></div>
+            <div class="einfo">
+                <p>活动时间：9月1日-9月30日</p>
+                <p>1.注册新用户可获1次刮奖机会</p>
+                <p>2.邀请好友成功注册可获1次刮奖机会</p>
+            </div>
+        </section>
+    </div>
+    <div class="hint-show">
+        <img class="hint-img" src="images/hint.png">
+        <img class="colour-img" src="images/colour.png">
+        <!--<img class="prize-img"/>-->
+        <span class="prize-span"></span>
+        <a class="close"></a>
+        <a class="btn"></a>
+    </div>
+
+    <div class="mask"></div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!--<script type="text/javascript" src="js/zepto.m.js"></script>-->
+<script type="text/javascript" src="js/jquery.eraser.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        /*var imgarr = ["images/prize01.jpg", "images/prize02.jpg", "images/prize03.jpg", "images/prize04.jpg", "images/prize05.jpg", "images/prize06.jpg"];*/
+        var imgarr = ["1%加息券", "1%加息券", "1%加息券", "4%加息券", "3%加息券", "2%加息券", "1%加息券"];
+        var clickNum = 1;
+        if(clickNum>=1){
+            $('#redux').eraser({
+                size: 50,   //设置橡皮擦大小
+                completeRatio: .6, //设置擦除面积比例
+                completeFunction: showResetButton   //大于擦除面积比例触发函数
+            });
+            /*获取随机数*/
+            var info = parseInt(Math.random() * 1000);
+            var thanks;
+            console.log(info)
+            /*通过判断设置出现概率*/
+            if (info == 1) {
+                arrinfo = imgarr[0];
+                thanks = true;
+            } else if (info >= 2 && info <= 4) {
+                arrinfo = imgarr[1];
+                thanks = true;
+            } else if (info >= 5 && info <= 9) {
+                arrinfo = imgarr[2];
+                thanks = true;
+            } else if (info >= 10 && info <= 20) {
+                arrinfo = imgarr[3];
+                thanks = true;
+            } else if (info >= 21 && info <= 40) {
+                arrinfo = imgarr[4];
+                thanks = true;
+            } else if (info >= 41 && info <= 400) {
+                arrinfo = imgarr[5];
+                thanks = true;
+            } else if (info >= 401) {
+                arrinfo = imgarr[6];
+                thanks = true;
+            }
+            $('.clicknum').text(clickNum);
+            clickNum--;
+//        $("#mask_img_bg>img").attr("src", arrinfo);
+            $("#mask_img_bg>span").text(arrinfo);
+            function showResetButton() {
+//            $(".prize-img").attr("src", arrinfo);
+                $(".prize-span").text(arrinfo);
+                if (thanks == true) {
+                    $(".main_box .hint-show,.main_box .mask").fadeIn(300);
+                }
+                $('.clicknum').text(clickNum);
+            }
+            $(".main_box .mask,.main_box .hint-show .close,.main_box .hint-show .btn").click(function () {
+                $(".main_box .hint-show,.main_box .mask").fadeOut(300);
+            });
+        }else {
+            document.addEventListener("touchstart",function () {
+                alert("您没有刮奖机会了");
+            })
+
+        }
+
+    })
+</script>
+
+</body>
+
+</html>

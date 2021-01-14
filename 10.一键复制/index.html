@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一键复制</title>
+    <script src="./jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .copyArea {
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+        }
+
+        textarea {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
+        li {
+            width: 100%;
+            height: 135px;
+            border-radius: 15px;
+            background-color: #e1f7ff;
+            margin-bottom: 20px;
+            padding: 20px 25px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+        }
+
+        .txt {
+            flex: 1;
+            font-size: 28px;
+            line-height: 42px;
+            color: #4f4f4f;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        span {
+            color: #fd5028;
+        }
+
+        .copy_btn {
+            width: 154px;
+            height: 48px;
+            font-size: 28px;
+            line-height: 48px;
+            color: #fd5028;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border: 1px solid #fd5028;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="copyArea">
+        <textarea id="textBox" readonly=""></textarea>
+    </div>
+    <div class="copyBox">
+        <div class="txt">
+            <p>你想要的的</p>
+            <p>券码:<span>KBMN8932hjsdJD</span></p>
+        </div>
+        <div class="copy_btn">一键复制</div>
+    </div>
+
+    <script type="text/javascript">
+        function copy(txt) {
+            var target = document.getElementById("textBox");
+            target.value = txt;
+            target.select();
+            console.log(target);
+            document.execCommand("Copy");
+            alert("复制成功")
+        }
+        $(".copy_btn").click(function () {
+            copy($(this).siblings().find("span").html());
+        })
+    </script>
+</body>
+
+</html>

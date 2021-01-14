@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>移动端左滑效果</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="./css/demo.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        h4 {
+            padding-left: 1rem;
+            margin-bottom: .25em;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .list {
+            scrollbar-width: none;
+        }
+
+        .list {
+            display: flex;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            overflow-y: hidden;
+        }
+
+        .content {
+            padding: .5rem 1rem;
+            line-height: 1.5;
+            flex: 0 0 calc(100vw - 2rem);
+            font-size: 1rem;
+            color: inherit;
+            background-color: #fff;
+            position: relative;
+            box-shadow: 0 1px #fff, 0 -1px #fff;
+        }
+
+        .space {
+            flex: 0 0 4rem;
+        }
+
+        .button {
+            border: 0;
+            padding: 0;
+            font-size: 1rem;
+            color: #fff;
+            width: 4rem;
+            height: 2.5rem;
+            position: absolute;
+            right: 0;
+            outline: 0;
+        }
+
+        [data-type="danger"] {
+            background-color: #eb4646;
+        }
+
+        [data-type="warning"] {
+            background-color: #f59b00;
+        }
+
+        /* 自动右边缘定位 */
+        .scroll-snap {
+            scroll-snap-type: x mandatory;
+        }
+
+        .scroll-snap .space {
+            scroll-snap-align: end;
+        }
+
+        .scroll-snap .content {
+            scroll-snap-align: start;
+        }
+
+        /* 多个按钮定位 */
+        .button:nth-of-type(2) {
+            right: 4rem;
+        }
+
+        .button:nth-of-type(3) {
+            right: 8rem;
+        }
+
+        .space:nth-child(4) {
+            flex: 0 0 8rem;
+        }
+
+        .space:nth-child(5) {
+            flex: 0 0 12rem;
+        }
+
+        /* 视差滚动 */
+        .perspective {
+            perspective: 1px;
+            transform-style: preserve-3d;
+            perspective-origin: 100% 50%;
+        }
+
+        .perspective .button:last-of-type {
+            transform: translate3D(2rem, 0, -1px) scale(2);
+        }
+
+        .perspective .button:first-of-type {
+            transform: translate3D(2rem, 0, -3px) scale(4);
+        }
+    </style>
+</head>
+
+<body>
+    <h4>1. 纯滚动</h4>
+    <div class="list">
+        <button class="button" data-type="danger">删除</button>
+        <a href="javascript:" class="content">我是列表，试试左滑我</a>
+        <s class="space"></s>
+    </div>
+
+    <h4>2. 带定位滚动</h4>
+    <div class="list scroll-snap">
+        <button class="button" data-type="danger">删除</button>
+        <a href="javascript:" class="content">我是列表，试试左滑我</a>
+        <s class="space"></s>
+    </div>
+
+    <h4>3. 多个按钮定位滚动</h4>
+    <div class="list scroll-snap">
+        <button class="button" data-type="danger">删除</button>
+        <button class="button" data-type="warning">不显示</button>
+        <a href="javascript:" class="content">我是列表，试试左滑我</a>
+        <s class="space"></s>
+    </div>
+
+    <h4>4. 多个按钮定位视差滚动</h4>
+    <div class="list scroll-snap perspective">
+        <button class="button" data-type="danger">删除</button>
+        <button class="button" data-type="warning">不显示</button>
+        <a href="javascript:" class="content">我是列表，试试左滑我</a>
+        <s class="space"></s>
+    </div>
+
+    <script>
+        document.querySelectorAll('button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var tips = this.tips;
+                if (tips) {
+                    tips.style.display = 'block';
+                } else {
+                    tips = document.createElement('div');
+                    tips.className = 'tips';
+                    document.body.appendChild(tips);
+                    this.tips = tips;
+                }
+
+                tips.textContent = '点击了' + this.textContent + '按钮';
+
+                setTimeout(function () {
+                    tips.style.display = 'none';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.h_prize {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/h_bg2.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+    padding-top: 90px;
+    box-sizing: border-box;
+}
+
+.prizeBox {
+    width: 640px;
+    height: 694px;
+    background-image: url(../images/h46.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.flower1 {
+    width: 152px;
+    height: 91px;
+    background-image: url(../images/h48.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -70px;
+    right: -40px;
+}
+
+.flower2 {
+    width: 117px;
+    height: 109px;
+    background-image: url(../images/h49.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -113px;
+    left: -32px;
+}
+
+.flower3 {
+    width: 113px;
+    height: 80px;
+    background-image: url(../images/h50.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -60px;
+    right: -3px;
+}
+
+.light {
+    width: 636px;
+    height: 680px;
+    background-image: url(../images/h47.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lottoBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+li {
+    width: 188px;
+    height: 198px;
+    background-image: url(../images/h58.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 4px 0;
+}
+
+img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+li.on {
+    width: 188px;
+    height: 198px;
+    background-image: url(../images/h59.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+li.lottoBtn {
+    width: 188px;
+    height: 198px;
+    background-image: url(../images/h51.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}

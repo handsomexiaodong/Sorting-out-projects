@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.double_disc {
+    width: 100vw;
+    min-height: 100vh;
+    padding-bottom: 30/750*100vw;
+    box-sizing: border-box;
+    background-image: url(../images/bg11.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+.img02 {
+    width: 100%;
+}
+
+.lotter_area {
+    width: 87.86667vw;
+    height: 87.86667vw;
+    position: relative;
+    margin: 0 auto;
+    margin-top: -26.66667vw;
+    margin-bottom: 12vw;
+}
+
+.giftl {
+    width: 30.66667vw;
+    height: 28.93333vw;
+    background-image: url(../images/icon16.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: -4vw;
+    left: -2vw;
+}
+
+.giftr {
+    width: 30.66667vw;
+    height: 28.93333vw;
+    background-image: url(../images/icon17.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: -4vw;
+    right: -2vw;
+}
+
+.chassis {
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/icon20.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.light {
+    width: 84.8vw;
+    height: 84.8vw;
+    background-image: url(../images/icon18.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.turntable {
+    width: 69.2vw;
+    height: 69.2vw;
+    background-image: url(../images/icon21.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -34.6vw;
+    margin-top: -34.6vw;
+    transition: transform 10s;
+    /* 转盘主要的运动 */
+    transition-timing-function: cubic-bezier(0.42, 0, 0, 0.99);
+}
+
+.start {
+    width: 24vw;
+    height: 32.8vw;
+    background-image: url(../images/icon19.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    top: 23.33333vw;
+    left: 50%;
+    margin-left: -12vw;
+}
+
+.start_btn {
+    width: 24vw;
+    height: 24vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.goBack {
+    display: block;
+    width: 42.66667vw;
+    height: 9.86667vw;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 4vw;
+}
+
+.goBack img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}

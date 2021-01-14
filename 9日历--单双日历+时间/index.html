@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .undb {
+            display: none;
+        }
+
+        /* #calendar-input {
+            height: 38px;
+            width: 280px;
+            border: 1px solid #d3d3d3;
+            display: block;
+            margin: auto;
+            border-radius: 5px;
+            padding: 0 10px;
+            font-size: 14px;
+        } */
+
+        /* .calendar-con {
+            width: 300px;
+            margin: auto;
+            position: relative;
+        } */
+
+        .calendar {
+            background: #fff;
+            /* border: 1px solid #d3d3d3; */
+            box-shadow: 0px 0px 18px #cccccc;
+            width: 600px;
+            border-radius: 5px;
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 170px;
+            z-index: 10;
+        }
+
+        .calendar .calendar-content {
+            display: flex;
+        }
+
+        .calendar .calendar-content .calendar-left,
+        .calendar .calendar-content .calendar-right {
+            width: 300px;
+        }
+
+        .calendar .dateTimeInput {
+            width: 100%;
+            height: 38px;
+            width: calc(100% - 20px);
+            border-bottom: 1px solid #D3D3D3;
+            padding: 0 10px;
+        }
+
+        .calendar .dateTimeInput input {
+            border: none;
+            width: calc(100% - 2px);
+            height: 38px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .calendar .calendar-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 41px;
+            border-bottom: 1px solid #D3D3D3;
+        }
+
+        .calendar .calendar-btn p {
+            width: 50px;
+        }
+
+        .calendar .calendar-btn a {
+            text-decoration: none;
+            color: #999;
+            font-size: 12px;
+            height: 40px;
+            width: 20px;
+            display: inline-block;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .calendar .title {
+            display: flex;
+            margin: 0 10px;
+        }
+
+        .calendar .title li {
+            flex: 1;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            width: calc((100% - 20px)/7);
+            margin-bottom: 0px !important;
+        }
+
+        .calendar .content .list ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .calendar .content {
+            margin: 0 10px;
+            padding-bottom: 10px;
+        }
+
+        .calendar .content .list ul li {
+            text-align: center;
+            height: 30px !important;
+            line-height: 30px;
+            width: calc((100%/7));
+            cursor: pointer;
+            font-size: 13px;
+            transition: all .3s;
+            margin: 5px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 0px !important;
+            color: #000;
+        }
+
+        .calendar .content .list ul li i {
+            display: block;
+            font-size: 8px;
+            margin-top: -17px;
+            font-style: normal;
+        }
+
+        .calendar .content .list ul li.disabled {
+            /*background: #f0f0f0;*/
+            color: #adadad;
+        }
+
+        .calendar .content .list ul li.active {
+            background: blue;
+            color: #fff;
+        }
+
+        .calendar .content .list ul li:hover {
+            color: darkgoldenrod;
+        }
+
+        .calendar .content .list ul li.hover {
+            background: lightskyblue;
+            color: #fff;
+        }
+
+        .calendar .content .list ul li.closure {
+            color: #c9c9c9;
+        }
+
+        .calendar .content .list ul li.startDate {
+            color: #fff;
+            background: #0068a9;
+            border-radius: 6px;
+            margin: 5px;
+            width: calc((100%/7) - 10px);
+        }
+
+        .calendar .content .list ul li.endDate {
+            color: #fff;
+            background: #0068a9;
+            border-radius: 6px;
+            margin: 5px;
+            width: calc((100%/7) - 10px);
+        }
+
+        .calendar .bottom-btn {
+            border-top: 1px solid #f0f0f0;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .calendar .bottom-btn a {
+            display: inline-block;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: blue;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .calendar .bottom-btn a.disabled {
+            background: #999;
+            cursor: no-drop;
+        }
+
+        .calendar-l,
+        .calendar-r {
+            flex: 1;
+        }
+
+        .left-time,
+        .right-time {
+            width: 100%;
+        }
+
+        .left-time .time-title,
+        .right-time .time-title {
+            height: 41px;
+            width: 100%;
+            text-align: center;
+            line-height: 41px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .left-time .tiem-conter,
+        .right-time .tiem-conter {
+            display: flex;
+        }
+
+        .left-time .tiem-conter .hour,
+        .left-time .tiem-conter .minute,
+        .right-time .tiem-conter .hour,
+        .right-time .tiem-conter .minute {
+            flex: 1;
+            text-align: center;
+        }
+
+        .left-time .tiem-conter .hour ul,
+        .left-time .tiem-conter .minute ul,
+        .right-time .tiem-conter .hour ul,
+        .right-time .tiem-conter .minute ul {
+            overflow: auto;
+            max-height: 290px;
+        }
+
+        .left-time .tiem-conter .hour ul li,
+        .left-time .tiem-conter .minute ul li,
+        .right-time .tiem-conter .hour ul li,
+        .right-time .tiem-conter .minute ul li {
+            cursor: pointer;
+            font-size: 12px;
+            height: 25px;
+            line-height: 25px;
+        }
+
+        .left-time .tiem-conter .hour ul li:hover,
+        .left-time .tiem-conter .minute ul li:hover,
+        .right-time .tiem-conter .hour ul li:hover,
+        .right-time .tiem-conter .minute ul li:hover {
+            background: lightskyblue;
+            color: #fff;
+        }
+
+        .left-time .tiem-conter .hour ul li.active,
+        .left-time .tiem-conter .minute ul li.active,
+        .right-time .tiem-conter .hour ul li.active,
+        .right-time .tiem-conter .minute ul li.active {
+            background: lightskyblue;
+            color: #fff;
+        }
+
+        .today-btn {
+            border-top: 1px solid #f0f0f0;
+            padding: 3px;
+            text-align: center;
+            cursor: pointer;
+            background: #f0f8ff;
+            color: #06C;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kuang time calendar-con">
+        <input type="text" placeholder="请选择时间" readonly id="calendar-input" class="timeSlect " />
+        <div class="calendar"></div>
+    </div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/calendar.js"></script>
+    <script>
+        $("#calendar-input").click(function () {
+            new InputCalendar(".calendar", {
+                jsonData: "", //数据只有再单日历时才会展示日历不展示数据
+                checkCalender: true, //（单日历 false /双日历 true）
+                hourMinute: true, //（不显示时分 false /显示时分 true）ps:时分秒只有再多选的时候展示，单日历不展示
+                afterToday: false, //今日之后 true 是不可选 false 是可选
+                beforeToday: false //今日之前 true 是不可选 false 是可选
+            });
+        })
+    </script>
+</body>
+
+
+</html>

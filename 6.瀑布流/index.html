@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>瀑布流</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 750px;
+            min-height: 100vh;
+        }
+
+        .companyList,
+        .companyList1 {
+            width: 650px;
+            min-height: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        li {
+            position: absolute;
+            width: 320px;
+            box-shadow: 2px 3px 8px #cccccc;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body class="box">
+    <ul class="companyList">
+        <li style="display: none">
+            <img src="http://www.ilinkone.com/assets/img/portfolio/apsjxshd_1.jpg" />
+            <p>手机的图片</p>
+        </li>
+        <li>
+            <img src="http://event.inh5.cn/hitachiqy/frontend/web/active_uploadimg/active_hitachi_zhzyd_sc002/684hitachi_zhzyd_sc002-1607511038viiah.png" />
+            <p>手机的图片</p>
+        </li>
+        <li>
+            <img src="https://fanyiapp.cdn.bcebos.com/cms/image/7d006fe094f4910322c379814ece6d9d.jpg" alt="">
+            <p>地税分局</p>
+        </li>
+        <li>
+            <img src="http://event.inh5.cn/hitachiqy/frontend/web/active_uploadimg/active_hitachi_zhzyd_sc002/684hitachi_zhzyd_sc002-160750059208170.png" />
+            <p></p>
+        </li>
+        <li>
+            <img src="https://sf1-scmcdn2-tos.pstatp.com/xitu_juejin_web/img/default.8172c27.png" alt="">
+            <p>库十多万士大夫</p>
+        </li>
+        <li>
+            <img src="http://www.ilinkone.com/assets/img/portfolio/apsjxshd_1.jpg" />
+            <p>手机的图片</p>
+        </li>
+        <li>
+            <img src="http://event.inh5.cn/hitachiqy/frontend/web/active_uploadimg/active_hitachi_zhzyd_sc002/684hitachi_zhzyd_sc002-1607511038viiah.png" />
+            <p>手机的图片</p>
+        </li>
+        <li>
+            <img src="http://event.inh5.cn/hitachiqy/frontend/web/active_uploadimg/active_hitachi_zhzyd_sc002/684hitachi_zhzyd_sc002-160750059208170.png" />
+            <p>动力电风扇</p>
+        </li>
+        <li>
+            <img src="https://pics6.baidu.com/feed/8718367adab44aed827a4c3472d95c06a08bfb7c.jpeg?token=60b1d0c4e8a0cdbed5f68aaa2749b264&s=2206F0044AA3DECE02BD46960300D08C" />
+            <p>抗战疫情</p>
+        </li>
+        <li>
+            <img src="https://pics5.baidu.com/feed/2f738bd4b31c8701543a7c386f1645280508ffd6.jpeg?token=5c80a02ba33398ffcba849bf44dd3c12&s=AB47CF1459EAC6CE42EBECCA030070BA" />
+            <p>有点冷</p>
+        </li>
+    </ul>
+    <script src="./js/pubuliu.js"></script>
+    <script>
+        let company = new Waterfall('.companyList', {
+            el: 'li',
+            w: 300,
+            lr: 50,
+            t: 40,
+            size: 3,
+            iscompare: false
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>下载PDF</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <link href="./css/style.css" rel="stylesheet" />
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body class="save_bg_img" id="pdfDom">
+    <!-- 页面展示内容 -->
+    <article class="report_card">
+        <div class="goBack">
+            <img src="./images/h_back.png" onclick="window.history.go(-1)" alt="">
+        </div>
+        <div class="my_card">
+            <div class="cloud"></div>
+            <div class="my_photo">
+                <div class="my_img">
+                    <img src="./images/h_pic8.png" alt="">
+                </div>
+                <div class="right">
+                    <h4>连续参与游戏</h4>
+                    <p>共计获得<span>300</span>积分</p>
+                </div>
+            </div>
+            <div class="my_num root">200积分</div>
+            <div class="my_num testing">1000积分</div>
+            <div class="my_num mass">60000积分</div>
+            <div class="verdict">稳定的手，精准的眼，却被反应速度稍稍拖了后腿，你距离完美只差一步！</div>
+        </div>
+        <div class="foot_btn">
+            <div class="make"></div>
+            <div class="save"></div>
+        </div>
+    </article>
+
+    <script type="text/javascript" src="./js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="./js/jspdf.js"></script>
+    <script>
+        (function () {
+            /* 下载PDF */
+            $(".save").click(function () {
+                getPdf("下载pdf")
+            })
+
+            function getPdf(title) {
+                html2canvas(document.querySelector('#pdfDom'), {
+                    allowTaint: true,
+                }).then(canvas => {
+                    //内容的宽度
+                    let contentWidth = canvas.width;
+                    //内容高度
+                    let contentHeight = canvas.height;
+                    //一页pdf显示html页面生成的canvas高度,a4纸的尺寸[595.28,841.89];
+                    let pageHeight = contentWidth / 592.28 * 841.89;
+                    //未生成pdf的html页面高度
+                    let leftHeight = contentHeight;
+                    //页面偏移
+                    let position = 0;
+                    //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                    let imgWidth = 595.28;
+                    let imgHeight = 592.28 / contentWidth * contentHeight;
+                    //canvas转图片数据
+                    let pageData = canvas.toDataURL('image/jpeg', 1.0);
+                    //新建JsPDF对象
+                    let PDF = new jsPDF('', 'pt', 'a4');
+                    //判断是否分页
+                    if (leftHeight < pageHeight) {
+                        PDF.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight)
+                    } else {
+                        while (leftHeight > 0) {
+                            PDF.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight);
+                            leftHeight -= pageHeight;
+                            position -= 841.89;
+                            if (leftHeight > 0) {
+                                PDF.addPage()
+                            }
+                        }
+                    }
+                    //保存文件
+                    PDF.save(title + '.pdf')
+                })
+            }
+        })()
+    </script>
+
+</body>
+
+</html>
