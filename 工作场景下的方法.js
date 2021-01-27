@@ -213,9 +213,9 @@ function getCreetTime() {
 }
 /**
  * @author xiaodong
- * @param {String} time
+ * @param {String} time '2020-12-30 10:58:00'
  * @returns {Number}
- * @description 时间转换成秒  '2020-12-30 10:58:00'
+ * @description 时间转换成秒  
  */
 function dataTime(time) {
     let [year, month, day] = time.split(" ")[0].split("-");
@@ -334,4 +334,99 @@ function rollNum(target, num, maxNum, addNum) {
             rollNum(target, num, maxNum, addNum);
         }, 50)
     }
+}
+/**
+ * @author xiaodong
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @returns {Boolean} 
+ * @description 判断2个数组是否相等
+ */
+function ArrayIsEqual(arr1, arr2) {
+    if (arr1 === arr2) { //如果2个数组对应的指针相同，那么肯定相等，同时也对比一下类型
+        return true;
+    } else {
+        if (arr1.length != arr2.length) {
+            return false;
+        } else { //长度相同
+            let arr3 = arr2.sort();
+            for (let i in arr1) { //循环遍历对比每个位置的元素
+                if (arr1[i] != arr3[i]) { //只要出现一次不相等，那么2个数组就不相等
+                    return false;
+                }
+            } //for循环完成，没有出现不相等的情况，那么2个数组相等
+            return true;
+        }
+    }
+}
+/**
+ * @author xiaodong
+ * @param {Array} arr
+ * @returns {Boolean} 
+ * @description 数组求和
+ */
+function sumArr(arr) {
+    return eval(arr.join("+"));
+};
+/**
+ * @author xiaodong
+ * @param {Array} arr 一维数组
+ * @param {Number} size 小数组的长度
+ * @returns {Array} 
+ * @description 数组分割
+ */
+function arrAplit(arr, size) {
+    let arr2 = []
+    for (var i = 0; i < arr.length; i = i + size) {
+        arr2.push(arr.slice(i, i + size))
+    }
+    let lastArr = arr2[arr2.length - 1];
+    let lastLength = arr2[arr2.length - 1].length;
+    if (lastLength < size) {
+        for (var j = size - 1; j >= 0; j--) {
+            if (j >= lastLength) {
+                lastArr.unshift(arr2[arr2.length - 2][j]);
+            }
+        }
+    }
+    return arr2
+}
+/**
+ * @author xiaodong
+ * @param {String} str
+ * @returns {Number} 
+ * @description 检测中英文长度
+ */
+function checkLength(str) {
+    var i, sum;
+    sum = 0;
+    for (i = 0; i < str.length; i++) {
+        if ((str.charCodeAt(i) >= 0) && (str.charCodeAt(i) <= 255)) {
+            sum = sum + 1;
+        } else {
+            sum = sum + 2;
+        }
+    }
+    return sum;
+}
+/**
+ * 获取前后n年的年份下拉
+ * n 当前往前n年，过去
+ * m 当前往后m年，未来
+ */
+function selectYear(n, m) {
+    if (m === '' || m === undefined)
+        m = 0;
+    var myDate = new Date();
+    var startYear = myDate.getFullYear() - n; //起始年份 
+    var endYear = myDate.getFullYear() + m; //结束年份
+    var arr = new Array();
+    for (var i = startYear; i <= endYear; i++) {
+        var obj = {
+            "id": i,
+            "text": i + "年"
+        };
+        arr.push(`${i}年`);
+    }
+    return arr;
 }
