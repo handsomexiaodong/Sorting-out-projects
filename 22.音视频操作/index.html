@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音视频操作</title>
+    <style>
+        button {
+            width: 90px;
+            height: 30px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #f45;
+        }
+    </style>
+</head>
+
+<body>
+    <video src="./video.mp4" width="700" height="400" id="myPlayer" controls></video>
+    <button onclick="fast()">快进>></button>
+    <script>
+        function fast() {
+            var el = document.getElementById("myPlayer");
+            var time = el.currentTime;
+            el.currentTime = time + 300;
+        }
+    </script>
+</body>
+
+</html>

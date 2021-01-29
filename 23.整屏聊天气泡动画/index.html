@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>聊天气泡动画</title>
+    <meta charset="utf-8" />
+    <meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+    <meta HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="pragram" content="no-cache" />
+    <!--移动端兼容适配 -->
+    <script type="text/javascript">
+        if (/Android (\d+\.\d+)/.test(navigator.userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            if (version > 2.3) {
+                var phoneScale = parseInt(window.screen.width) / 750;
+                //alert(parseInt(window.screen.width));
+                document.write('<meta name="viewport" content="width=750, minimum-scale = ' + phoneScale + ', maximum-scale = ' + phoneScale + ', target-densitydpi=device-dpi">');
+            } else {
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+        //微信去掉下方刷新栏
+        if (navigator.userAgent.indexOf('MicroMessenger') >= 0) {
+            document.addEventListener('WeixinJSBridgeReady', function () {
+                //WeixinJSBridge.call('hideToolbar');
+            });
+        }
+    </script>
+    <script src="./js/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 24px;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+
+        }
+
+        .inputBox {
+            width: 100%;
+            height: 400px;
+            box-shadow: 3px 3px 8px #cccccc;
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            padding: 10px;
+            box-sizing: border-box;
+            top: 0;
+            left: 0;
+        }
+
+        button {
+            display: block;
+            width: 180px;
+            height: 50px;
+            margin: 20px auto;
+            background-color: deeppink;
+            color: #ffffff;
+            line-height: 50px;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputBox">
+        <textarea name="" id="words" cols="30" rows="10"></textarea>
+    </div>
+    <button id="btn">发送</button>
+
+    <script type="text/javascript" src="./js/pixi.js"></script>
+    <script type="text/javascript" src="./js/bubble.js"></script>
+    <script>
+        $("#btn").click(function () {
+            let conTxt = $("#words").val();
+            console.log(conTxt);
+            new Bubble('哈哈哈');
+        })
+    </script>
+</body>
+
+</html>
