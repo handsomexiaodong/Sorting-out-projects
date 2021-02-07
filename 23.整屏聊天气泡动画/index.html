@@ -79,6 +79,9 @@
             line-height: 50px;
             border-radius: 4px;
             text-align: center;
+            border: 1px solid transparent;
+            outline: none;
+            /* color: transparent; */
         }
     </style>
 </head>
@@ -94,8 +97,7 @@
     <script>
         $("#btn").click(function () {
             let conTxt = $("#words").val();
-            console.log(conTxt);
-            new Bubble('哈哈哈');
+            new Bubble(conTxt);
         })
     </script>
 </body>
