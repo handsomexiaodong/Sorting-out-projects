@@ -430,3 +430,64 @@ function selectYear(n, m) {
     }
     return arr;
 }
+/**
+ * @author xiaodong
+ * @param {String} fontSize 要检测字体的像素值
+ * @param {String} fontFamily 文字的字体
+ * @param {String} text 要检测的文字
+ * @returns {Object} 
+ * @description 检测字体的宽高
+ */
+function textSize(fontSize, fontFamily, text) {
+    var span = document.createElement("span");
+    var result = {};
+    result.width = span.offsetWidth;
+    result.height = span.offsetHeight;
+    span.style.visibility = "hidden";
+    span.style.fontSize = fontSize;
+    span.style.fontFamily = fontFamily;
+    span.style.display = "inline-block";
+    document.body.appendChild(span);
+    if (typeof span.textContent != "undefined") {
+        span.textContent = text;
+    } else {
+        span.innerText = text;
+    }
+    result.width = parseFloat(window.getComputedStyle(span).width) - result.width;
+    result.height = parseFloat(window.getComputedStyle(span).height) - result.height;
+    return result;
+}
+/**
+ * @author xiaodong
+ * @param {function} fn 要做的事
+ * @param {Number} delay 
+ * @description 某个时间期限内(200毫秒)事情处理函数只执行一次【防抖】
+ */
+function debance(fn, delay = 200) {
+    let timer = null
+    return () => {
+        if (timer) {
+            clearTimeout(timer)
+        }
+        timer = setTimeout(() => {
+            fn()
+        }, delay)
+    }
+}
+/**
+ * @author xiaodong
+ * @param {function} fn 要做的事
+ * @param {Number} delay 
+ * @description 每隔一段时间(300毫秒)执行一次函数【节流】
+ */
+function throttle(fn, delay = 300) {
+    let flag = true
+    return () => {
+        if (!flag) return
+        flag = false
+        setTimeout(() => {
+            fn();
+            flag = true
+        }, delay)
+    }
+}
