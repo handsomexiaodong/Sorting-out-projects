@@ -491,3 +491,51 @@ function throttle(fn, delay = 300) {
         }, delay)
     }
 }
+/**
+ * @author xiaodong
+ * @param {data} 时间对象
+ * @returns {Object}
+ * @description 获取时间
+ */
+function dealWithTime(data) { // 获取当前时间
+    let Y = data.getFullYear();
+    let M = data.getMonth() + 1;
+    let D = data.getDate();
+    let H = data.getHours();
+    let Min = data.getMinutes();
+    let S = data.getSeconds();
+    let W = data.getDay();
+    let obj = new Object();
+    H = H < 10 ? "0" + H : H;
+    Min = Min < 10 ? "0" + Min : Min;
+    S = S < 10 ? "0" + S : S;
+    switch (W) {
+      case 0:
+        W = "日";
+        break;
+      case 1:
+        W = "一";
+        break;
+      case 2:
+        W = "二";
+        break;
+      case 3:
+        W = "三";
+        break;
+      case 4:
+        W = "四";
+        break;
+      case 5:
+        W = "五";
+        break;
+      case 6:
+        W = "六";
+        break;
+      default:
+        break;
+    }
+    obj.nowDate = Y + "年" + M + "月" + D + "日 ";
+    obj.nowWeek = "周" + W ;
+    obj.nowTime = H + ":" + Min + ":" + S;
+    return obj;
+}
