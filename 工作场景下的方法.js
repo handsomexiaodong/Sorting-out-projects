@@ -642,3 +642,26 @@ function smalltoBIG(money) {
   return chineseStr
 
 }
+/**
+ * @author xiaodong
+ * @description 格式化千分符并保留两位小数
+ */
+function toDecimal(x){
+  if (isNaN(x) || !x) {
+    return (0).toFixed(2);
+  }
+  let final = '';
+  if(x < 0) {
+    final = JSON.parse(JSON.stringify(x));
+    x = Math.abs(x);
+  }
+  x = parseFloat((x + '').replace(/[^\d\.-]/g, '')).toFixed(2) + '';
+  let l = x.split('.')[0].split('').reverse(),
+      r = x.split('.')[1];
+  let t = '';
+  for (let i = 0; i < l.length; i++) {
+      t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? ',' : '');
+  }
+  let fixed_result = t.split('').reverse().join('') + '.' + r;
+  return final ? '-' + fixed_result : fixed_result;
+},
