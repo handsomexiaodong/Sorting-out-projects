@@ -664,4 +664,90 @@ function toDecimal(x){
   }
   let fixed_result = t.split('').reverse().join('') + '.' + r;
   return final ? '-' + fixed_result : fixed_result;
+}
+/**
+ * @author xiaodong
+ * @param {base64Img} base64Img
+ * @param {Object} wmConfig
+ * @returns {base64}
+ * @description 图片添加水印
+ */
+base64AddWaterMaker(base64Img, wmConfig) {
+  let _this = this;
+  if (wmConfig.textArray.length === 0) {
+    console.error("****没有水印内容*****");
+    return base64Img;
+  }
+  return new Promise((resolve, reject) => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    let resultBase64 = null;
+    img.onload = function() {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      //canvas绘制图片，0 0  为左上角坐标原点
+      ctx.drawImage(img, 0, 0);
+      //写入水印
+      _this.drawWaterMark(ctx, img.width, img.height, wmConfig);
+      resultBase64 = canvas.toDataURL("image/png");
+      if (!resultBase64) {
+        reject();
+      } else {
+        resolve(resultBase64);
+      }
+    };
+    img.src = base64Img;
+  });
+}
+//画布添加水印
+drawWaterMark(ctx, imgWidth, imgHeight, wmConfig) {
+  let fontSize;
+  if (imgWidth >= 3456) {
+    fontSize = 50;
+  } else if (imgWidth >= 2700) {
+    fontSize = 30;
+  } else if (imgWidth >= 2000) {
+    fontSize = 26;
+  } else if (imgWidth >= 1436) {
+    fontSize = 20;
+  } else if (imgWidth >= 800) {
+    fontSize = 12;
+  } else if (imgWidth >= 500) {
+    fontSize = 10;
+  } else {
+    fontSize = 20;
+  }
+  console.log(imgWidth, imgHeight, fontSize);
+  ctx.fillStyle = "white";
+  ctx.font = `${fontSize}px ${wmConfig.font}`;
+  ctx.lineWidth = 1;
+  ctx.fillStyle = "rgba(243,120,100,0.9)";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  const maxPx = Math.max(imgWidth, imgHeight);
+  const stepPx = Math.floor(maxPx / wmConfig.density);
+  let arrayX = [0];//初始水印位置 canvas坐标 0 0 点
+  while (arrayX[arrayX.length - 1] < maxPx/2) {
+    arrayX.push(arrayX[arrayX.length - 1] + stepPx);
+  }
+  arrayX.push(...arrayX.slice(1, arrayX.length).map((el) => {
+    return -el;
+  }));
+  console.log(arrayX);
+  for (let i = 0; i < arrayX.length; i++) {
+    for (let j = 0; j < arrayX.length; j++) {
+      ctx.save();
+      ctx.translate(imgWidth / 2, imgHeight / 2); ///画布旋转原点 移到 图片中心
+      ctx.rotate(-Math.PI / 5);
+      if (wmConfig.textArray.length > 3) {
+        wmConfig.textArray = wmConfig.textArray.slice(0, 3);
+      }
+      wmConfig.textArray.forEach((el, index) => {
+        let offsetY = fontSize * index + 2;
+        ctx.fillText(el, arrayX[i], arrayX[j] + offsetY);
+      });
+      ctx.restore();
+    }
+  }
 },
