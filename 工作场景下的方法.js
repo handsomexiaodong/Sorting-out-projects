@@ -751,3 +751,32 @@ drawWaterMark(ctx, imgWidth, imgHeight, wmConfig) {
     }
   }
 },
+deepCopy(obj, hash = new WeakMap()) {  
+  // 处理非对象或null的情况  
+  if (typeof obj !== 'object' || obj === null) {  
+    // 对于函数和正则对象，直接返回  
+    if (typeof obj === 'function' || obj instanceof RegExp) {  
+      return obj;  
+    }  
+    return obj;  
+  }  
+  
+  // 处理循环引用的情况  
+  if (hash.has(obj)) {  
+    return hash.get(obj);  
+  }  
+  
+  // 初始化新的对象或数组  
+  let copy = Array.isArray(obj) ? [] : {};  
+  hash.set(obj, copy);  
+  
+  // 遍历对象的每个属性  
+  for (let key in obj) {  
+    if (obj.hasOwnProperty(key)) {  
+      // 递归调用deepCopy  
+      copy[key] = deepCopy(obj[key], hash);  
+    }  
+  }  
+  
+  return copy;  
+}
